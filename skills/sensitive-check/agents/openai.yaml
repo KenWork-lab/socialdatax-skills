@@ -4,4 +4,4 @@ interface:
   default_prompt: "Use $sensitive-check to check draft text for sensitive words, prohibited words, and publishing risks with SocialDataX."
 
 policy:
-  allow_implicit_invocation: true
+  allow_implicit_invocation: false
