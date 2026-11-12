@@ -11179,6 +11179,10 @@ test("direct content url options are not treated as upstream endpoint overrides"
     cli,
     /function resolveUpstreamUrl\(platform\) \{\n  return readFirstEnv\(platform\.upstreamEnv\) \|\| platform\.endpoint;\n\}/
   );
+  assert.match(cli, /function validateUpstreamUrl\(platform, upstreamUrl\)/);
+  assert.match(cli, /SOCIALDATAX_ALLOW_CUSTOM_UPSTREAM_URL !== "1"/);
+  assert.match(cli, /parsed\.protocol !== "https:"/);
+  assert.match(cli, /parsed\.username \|\| parsed\.password/);
   assert.doesNotMatch(cli, /resolveUpstreamUrl\(platform, options\)/);
   assert.doesNotMatch(cli, /options\.url \|\| readFirstEnv\(platform\.upstreamEnv\)/);
 });
