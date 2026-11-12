@@ -89,6 +89,7 @@ Common search phrases for this skill package:
 - Sensitive Words Check hosted MCP endpoint: `https://mcp.socialdatax.com/sensitive-check/mcp`
 - Hosted transport: `streamable-http`
 - Authentication: `Authorization: Bearer <SOCIALDATAX_API_KEY>`
+- Security: direct CLI calls use the built-in HTTPS endpoint by default. Custom MCP upstream URLs are blocked unless `SOCIALDATAX_ALLOW_CUSTOM_UPSTREAM_URL=1` is explicitly set; only enable this for a server you trust because your API Key is sent to that server. Custom upstream URLs must use HTTPS and must not embed credentials or URL fragments.
 - Website: <https://socialdatax.com>
 - Repo-tracked platform MCP listings: `com.52choujiang/xhs-insights`, `com.52choujiang/douyin-insights`, `com.52choujiang/kuaishou-insights`, `com.52choujiang/bilibili-insights`, `com.52choujiang/weibo-insights`, `com.52choujiang/wechat-channels-insights`, `com.52choujiang/zhihu-insights`, `com.52choujiang/instagram-insights`, `com.52choujiang/x-insights`, `com.52choujiang/youtube-insights`, and `com.52choujiang/tiktok-insights`.
 - Repo-tracked future SocialDataX namespace draft files exist for XHS and Douyin: `com.socialdatax/xhs-insights` and `com.socialdatax/douyin-insights`.
