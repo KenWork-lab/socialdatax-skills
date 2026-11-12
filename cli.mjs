@@ -2706,6 +2706,34 @@ function resolveUpstreamUrl(platform) {
   return readFirstEnv(platform.upstreamEnv) || platform.endpoint;
 }
 
+function validateUpstreamUrl(platform, upstreamUrl) {
+  let parsed;
+  try {
+    parsed = new URL(upstreamUrl);
+  } catch {
+    throw new Error("Invalid MCP upstream URL.");
+  }
+
+  if (parsed.protocol !== "https:") {
+    throw new Error("MCP upstream URLs must use HTTPS.");
+  }
+  if (parsed.username || parsed.password) {
+    throw new Error("MCP upstream URLs must not contain embedded credentials.");
+  }
+  if (parsed.hash) {
+    throw new Error("MCP upstream URLs must not contain URL fragments.");
+  }
+
+  if (
+    upstreamUrl !== platform.endpoint &&
+    process.env.SOCIALDATAX_ALLOW_CUSTOM_UPSTREAM_URL !== "1"
+  ) {
+    throw new Error(
+      "Custom MCP upstream is disabled because API keys are sent to the configured server. Set SOCIALDATAX_ALLOW_CUSTOM_UPSTREAM_URL=1 only if you trust that server."
+    );
+  }
+}
+
 function expandHome(path) {
   if (!path || path === "~") {
     return homedir();
@@ -7395,9 +7423,10 @@ async function callMcpBackend(
 ) {
   ensureSupportedNodeVersion();
   const { platform, tool } = operation;
+  const upstreamUrl = resolveUpstreamUrl(platform);
+  validateUpstreamUrl(platform, upstreamUrl);
   const apiKey = readDirectApiKey(platform);
   const { Client, StreamableHTTPClientTransport } = await loadMcpSdkModules();
-  const upstreamUrl = resolveUpstreamUrl(platform);
   const client = new Client(
     { name: PACKAGE_NAME, version: PACKAGE_VERSION },
     { capabilities: {} }
