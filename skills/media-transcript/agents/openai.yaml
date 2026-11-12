@@ -4,4 +4,4 @@ interface:
   default_prompt: "Use $media-transcript to submit and check video speech-to-text transcript jobs for XHS, Douyin, Kuaishou, Weibo, WeChat Channels, Bilibili, Zhihu, Instagram, X / Twitter, TikTok, or YouTube content; use direct CLI commands or hosted MCP tools for all eleven platforms."
 
 policy:
-  allow_implicit_invocation: true
+  allow_implicit_invocation: false
