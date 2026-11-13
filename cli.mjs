@@ -30,7 +30,7 @@ export { decryptWechatMediaCommand };
 
 const PACKAGE_NAME = "socialdatax-skills";
 const PACKAGE_VERSION = "0.2.66";
-const PACKAGE_SPEC = `${PACKAGE_NAME}@latest`;
+const PACKAGE_SPEC = `${PACKAGE_NAME}@${PACKAGE_VERSION}`;
 const LOG_PREFIX = `[${PACKAGE_NAME}]`;
 const MIN_NODE_VERSION = "20.18.1";
 const HOMEPAGE_URL = "https://socialdatax.com";
