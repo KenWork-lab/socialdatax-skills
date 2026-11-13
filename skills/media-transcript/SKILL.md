@@ -54,139 +54,139 @@ Use `SOCIALDATAX_API_KEY` for SocialDataX requests. The only official website fo
 Prefer the direct CLI when the agent can run shell commands. It does not require MCP server configuration:
 
 ```bash
-npx -y socialdatax-skills@latest xhs transcript \
+npx -y socialdatax-skills@0.2.66 xhs transcript \
   --url "<note_url_or_share_text>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-transcript
 
-npx -y socialdatax-skills@latest xhs transcript \
+npx -y socialdatax-skills@0.2.66 xhs transcript \
   --note-id "<note_id>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-transcript
 
-npx -y socialdatax-skills@latest xhs transcript \
+npx -y socialdatax-skills@0.2.66 xhs transcript \
   --job-id "<job_id>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-transcript
 
-npx -y socialdatax-skills@latest douyin transcript \
+npx -y socialdatax-skills@0.2.66 douyin transcript \
   --url "<douyin_content_url_or_share_text>" --pretty \
   --source-client socialdatax-skills --source-platform github \
   --source-skill media-transcript
 
-npx -y socialdatax-skills@latest douyin transcript \
+npx -y socialdatax-skills@0.2.66 douyin transcript \
   --aweme-id "<aweme_id>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-transcript
 
-npx -y socialdatax-skills@latest douyin transcript \
+npx -y socialdatax-skills@0.2.66 douyin transcript \
   --job-id "<job_id>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-transcript
 
-npx -y socialdatax-skills@latest kuaishou transcript \
+npx -y socialdatax-skills@0.2.66 kuaishou transcript \
   --url "<kuaishou_content_url_or_share_text>" --pretty \
   --source-client socialdatax-skills --source-platform github \
   --source-skill media-transcript
 
-npx -y socialdatax-skills@latest kuaishou transcript \
+npx -y socialdatax-skills@0.2.66 kuaishou transcript \
   --photo-id "<photo_id>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-transcript
 
-npx -y socialdatax-skills@latest kuaishou transcript \
+npx -y socialdatax-skills@0.2.66 kuaishou transcript \
   --job-id "<job_id>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-transcript
 
-npx -y socialdatax-skills@latest weibo transcript \
+npx -y socialdatax-skills@0.2.66 weibo transcript \
   --post-url "<weibo_post_url_or_share_text>" --pretty \
   --source-client socialdatax-skills --source-platform github \
   --source-skill media-transcript
 
-npx -y socialdatax-skills@latest weibo transcript \
+npx -y socialdatax-skills@0.2.66 weibo transcript \
   --post-id "<post_id>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-transcript
 
-npx -y socialdatax-skills@latest weibo transcript \
+npx -y socialdatax-skills@0.2.66 weibo transcript \
   --job-id "<job_id>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-transcript
 
-npx -y socialdatax-skills@latest wechat transcript \
+npx -y socialdatax-skills@0.2.66 wechat transcript \
   --url "<wechat_video_url_or_share_text>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-transcript
 
-npx -y socialdatax-skills@latest wechat transcript \
+npx -y socialdatax-skills@0.2.66 wechat transcript \
   --encrypted-object-id "<encrypted_object_id>" --pretty \
   --source-client socialdatax-skills --source-platform github \
   --source-skill media-transcript
 
-npx -y socialdatax-skills@latest wechat transcript \
+npx -y socialdatax-skills@0.2.66 wechat transcript \
   --job-id "<job_id>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-transcript
 
-npx -y socialdatax-skills@latest bilibili transcript \
+npx -y socialdatax-skills@0.2.66 bilibili transcript \
   --url "<video_url>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-transcript
 
-npx -y socialdatax-skills@latest bilibili transcript \
+npx -y socialdatax-skills@0.2.66 bilibili transcript \
   --bvid "<bvid>" --pretty --source-client socialdatax-skills --source-platform github \
   --source-skill media-transcript
 
-npx -y socialdatax-skills@latest bilibili transcript \
+npx -y socialdatax-skills@0.2.66 bilibili transcript \
   --job-id "<job_id>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-transcript
 
-npx -y socialdatax-skills@latest zhihu transcript \
+npx -y socialdatax-skills@0.2.66 zhihu transcript \
   --url "<video_url>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-transcript
 
-npx -y socialdatax-skills@latest zhihu transcript \
+npx -y socialdatax-skills@0.2.66 zhihu transcript \
   --zvideo-id "<zvideo_id>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-transcript
 
-npx -y socialdatax-skills@latest zhihu transcript \
+npx -y socialdatax-skills@0.2.66 zhihu transcript \
   --job-id "<job_id>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-transcript
 
-npx -y socialdatax-skills@latest instagram transcript \
+npx -y socialdatax-skills@0.2.66 instagram transcript \
   --url "<post_url>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-transcript
 
-npx -y socialdatax-skills@latest instagram transcript \
+npx -y socialdatax-skills@0.2.66 instagram transcript \
   --post-id "<post_id>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-transcript
 
-npx -y socialdatax-skills@latest instagram transcript \
+npx -y socialdatax-skills@0.2.66 instagram transcript \
   --job-id "<job_id>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-transcript
 
-npx -y socialdatax-skills@latest x transcript \
+npx -y socialdatax-skills@0.2.66 x transcript \
   --url "<post_url>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-transcript
 
-npx -y socialdatax-skills@latest x transcript \
+npx -y socialdatax-skills@0.2.66 x transcript \
   --post-id "<post_id>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-transcript
 
-npx -y socialdatax-skills@latest x transcript \
+npx -y socialdatax-skills@0.2.66 x transcript \
   --job-id "<job_id>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-transcript
 
-npx -y socialdatax-skills@latest tiktok transcript \
+npx -y socialdatax-skills@0.2.66 tiktok transcript \
   --url "<video_url>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-transcript
 
-npx -y socialdatax-skills@latest tiktok transcript \
+npx -y socialdatax-skills@0.2.66 tiktok transcript \
   --aweme-id "<aweme_id>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-transcript
 
-npx -y socialdatax-skills@latest tiktok transcript \
+npx -y socialdatax-skills@0.2.66 tiktok transcript \
   --job-id "<job_id>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-transcript
 
-npx -y socialdatax-skills@latest youtube transcript \
+npx -y socialdatax-skills@0.2.66 youtube transcript \
   --url "<video_url>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-transcript
 
-npx -y socialdatax-skills@latest youtube transcript \
+npx -y socialdatax-skills@0.2.66 youtube transcript \
   --video-id "<video_id>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-transcript
 
-npx -y socialdatax-skills@latest youtube transcript \
+npx -y socialdatax-skills@0.2.66 youtube transcript \
   --job-id "<job_id>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-transcript
 ```
