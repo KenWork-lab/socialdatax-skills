@@ -57,242 +57,242 @@ Use `SOCIALDATAX_API_KEY` for SocialDataX requests. The only official website fo
 Prefer the direct CLI when the agent can run shell commands. It does not require MCP server configuration:
 
 ```bash
-npx -y socialdatax-skills@latest xhs comments \
+npx -y socialdatax-skills@0.2.66 xhs comments \
   --note-id "<note_id>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-comments
 
-npx -y socialdatax-skills@latest xhs comments \
+npx -y socialdatax-skills@0.2.66 xhs comments \
   --note-id "<note_id>" --all --include-replies --pretty \
   --source-client socialdatax-skills --source-platform github \
   --source-skill media-comments
 
-npx -y socialdatax-skills@latest xhs comments \
+npx -y socialdatax-skills@0.2.66 xhs comments \
   --url "<note_url_or_share_text>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-comments
 
-npx -y socialdatax-skills@latest xhs sub-comments \
+npx -y socialdatax-skills@0.2.66 xhs sub-comments \
   --note-id "<note_id>" --comment-id "<comment_id>" --pretty \
   --source-client socialdatax-skills --source-platform github \
   --source-skill media-comments
 
-npx -y socialdatax-skills@latest douyin comments \
+npx -y socialdatax-skills@0.2.66 douyin comments \
   --aweme-id "<aweme_id>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-comments
 
-npx -y socialdatax-skills@latest douyin comments \
+npx -y socialdatax-skills@0.2.66 douyin comments \
   --aweme-id "<aweme_id>" --all --include-replies --pretty \
   --source-client socialdatax-skills --source-platform github \
   --source-skill media-comments
 
-npx -y socialdatax-skills@latest douyin comments \
+npx -y socialdatax-skills@0.2.66 douyin comments \
   --url "<douyin_content_url_or_share_text>" --pretty \
   --source-client socialdatax-skills --source-platform github \
   --source-skill media-comments
 
-npx -y socialdatax-skills@latest douyin replies \
+npx -y socialdatax-skills@0.2.66 douyin replies \
   --aweme-id "<aweme_id>" --comment-id "<comment_id>" --pretty \
   --source-client socialdatax-skills --source-platform github \
   --source-skill media-comments
 
-npx -y socialdatax-skills@latest kuaishou comments \
+npx -y socialdatax-skills@0.2.66 kuaishou comments \
   --photo-id "<photo_id>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-comments
 
-npx -y socialdatax-skills@latest kuaishou comments \
+npx -y socialdatax-skills@0.2.66 kuaishou comments \
   --photo-id "<photo_id>" --all --include-replies --pretty \
   --source-client socialdatax-skills --source-platform github \
   --source-skill media-comments
 
-npx -y socialdatax-skills@latest kuaishou comments \
+npx -y socialdatax-skills@0.2.66 kuaishou comments \
   --url "<kuaishou_content_url_or_share_text>" --pretty \
   --source-client socialdatax-skills --source-platform github \
   --source-skill media-comments
 
-npx -y socialdatax-skills@latest kuaishou replies \
+npx -y socialdatax-skills@0.2.66 kuaishou replies \
   --photo-id "<photo_id>" --comment-id "<comment_id>" --pretty \
   --source-client socialdatax-skills --source-platform github \
   --source-skill media-comments
 
-npx -y socialdatax-skills@latest bilibili comments \
+npx -y socialdatax-skills@0.2.66 bilibili comments \
   --content-id "<content_id>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-comments
 
-npx -y socialdatax-skills@latest bilibili comments \
+npx -y socialdatax-skills@0.2.66 bilibili comments \
   --url "<bilibili_content_url_or_share_text>" --pretty \
   --source-client socialdatax-skills --source-platform github \
   --source-skill media-comments
 
-npx -y socialdatax-skills@latest bilibili replies \
+npx -y socialdatax-skills@0.2.66 bilibili replies \
   --comment-object-id "<comment_object_id>" \
   --comment-object-type "<comment_object_type_integer>" --comment-id "<comment_id>" \
   --pretty --source-client socialdatax-skills --source-platform github \
   --source-skill media-comments
 
-npx -y socialdatax-skills@latest zhihu comments \
+npx -y socialdatax-skills@0.2.66 zhihu comments \
   --content-url "<zhihu_content_url_or_share_text>" --pretty \
   --source-client socialdatax-skills --source-platform github \
   --source-skill media-comments
 
-npx -y socialdatax-skills@latest zhihu replies \
+npx -y socialdatax-skills@0.2.66 zhihu replies \
   --content-url "<zhihu_content_url_or_share_text>" --comment-id "<comment_id>" \
   --pretty --source-client socialdatax-skills --source-platform github \
   --source-skill media-comments
 
-npx -y socialdatax-skills@latest instagram comments \
+npx -y socialdatax-skills@0.2.66 instagram comments \
   --post-url "<instagram_post_url_or_share_text>" --pretty \
   --source-client socialdatax-skills --source-platform github \
   --source-skill media-comments
 
-npx -y socialdatax-skills@latest instagram replies \
+npx -y socialdatax-skills@0.2.66 instagram replies \
   --post-id "<post_id>" --comment-id "<comment_id>" --pretty \
   --source-client socialdatax-skills --source-platform github \
   --source-skill media-comments
 
-npx -y socialdatax-skills@latest x comments \
+npx -y socialdatax-skills@0.2.66 x comments \
   --post-id "<post_id>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-comments
 
-npx -y socialdatax-skills@latest x comments \
+npx -y socialdatax-skills@0.2.66 x comments \
   --post-url "<x_post_url_or_share_text>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-comments
 
-npx -y socialdatax-skills@latest x replies \
+npx -y socialdatax-skills@0.2.66 x replies \
   --post-id "<post_id>" --comment-id "<comment_id>" --pretty \
   --source-client socialdatax-skills --source-platform github \
   --source-skill media-comments
 
-npx -y socialdatax-skills@latest youtube comments \
+npx -y socialdatax-skills@0.2.66 youtube comments \
   --url "<youtube_video_url>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-comments
 
-npx -y socialdatax-skills@latest youtube replies \
+npx -y socialdatax-skills@0.2.66 youtube replies \
   --reply-token "<reply_token>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-comments
 
-npx -y socialdatax-skills@latest tiktok comments \
+npx -y socialdatax-skills@0.2.66 tiktok comments \
   --post-id "<post_id>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-comments
 
-npx -y socialdatax-skills@latest tiktok comments \
+npx -y socialdatax-skills@0.2.66 tiktok comments \
   --url "<tiktok_post_url_or_share_text>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-comments
 
-npx -y socialdatax-skills@latest tiktok replies \
+npx -y socialdatax-skills@0.2.66 tiktok replies \
   --post-id "<post_id>" --comment-id "<comment_id>" --pretty \
   --source-client socialdatax-skills --source-platform github \
   --source-skill media-comments
 
-npx -y socialdatax-skills@latest weibo comments \
+npx -y socialdatax-skills@0.2.66 weibo comments \
   --post-id "<post_id>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-comments
 
-npx -y socialdatax-skills@latest weibo comments \
+npx -y socialdatax-skills@0.2.66 weibo comments \
   --post-id "<post_id>" --all --include-replies --pretty \
   --source-client socialdatax-skills --source-platform github \
   --source-skill media-comments
 
-npx -y socialdatax-skills@latest weibo comments \
+npx -y socialdatax-skills@0.2.66 weibo comments \
   --post-url "<weibo_post_url_or_share_text>" --pretty \
   --source-client socialdatax-skills --source-platform github \
   --source-skill media-comments
 
-npx -y socialdatax-skills@latest weibo replies \
+npx -y socialdatax-skills@0.2.66 weibo replies \
   --post-id "<post_id>" --comment-id "<comment_id>" --pretty \
   --source-client socialdatax-skills --source-platform github \
   --source-skill media-comments
 
-npx -y socialdatax-skills@latest toutiao comments \
+npx -y socialdatax-skills@0.2.66 toutiao comments \
   --post-id "<post_id>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-comments
 
-npx -y socialdatax-skills@latest toutiao comments \
+npx -y socialdatax-skills@0.2.66 toutiao comments \
   --post-id "<post_id>" --all --include-replies --pretty \
   --source-client socialdatax-skills --source-platform github \
   --source-skill media-comments
 
-npx -y socialdatax-skills@latest toutiao comments \
+npx -y socialdatax-skills@0.2.66 toutiao comments \
   --url "<toutiao_content_url_or_share_text>" --pretty \
   --source-client socialdatax-skills --source-platform github \
   --source-skill media-comments
 
-npx -y socialdatax-skills@latest toutiao replies \
+npx -y socialdatax-skills@0.2.66 toutiao replies \
   --comment-id "<comment_id>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-comments
 
-npx -y socialdatax-skills@latest wechat comments \
+npx -y socialdatax-skills@0.2.66 wechat comments \
   --object-id "<object_id>" --object-nonce-id "<object_nonce_id>" --pretty \
   --source-client socialdatax-skills --source-platform github \
   --source-skill media-comments
 
-npx -y socialdatax-skills@latest wechat comments \
+npx -y socialdatax-skills@0.2.66 wechat comments \
   --object-id "<object_id>" --object-nonce-id "<object_nonce_id>" --all \
   --include-replies --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-comments
 
-npx -y socialdatax-skills@latest wechat comments \
+npx -y socialdatax-skills@0.2.66 wechat comments \
   --url "<wechat_video_url_or_share_text>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-comments
 
-npx -y socialdatax-skills@latest wechat replies \
+npx -y socialdatax-skills@0.2.66 wechat replies \
   --object-id "<object_id>" --object-nonce-id "<object_nonce_id>" \
   --comment-id "<comment_id>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-comments
 
-npx -y socialdatax-skills@latest xhs product-reviews \
+npx -y socialdatax-skills@0.2.66 xhs product-reviews \
   --sku-id "<sku_id>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-comments
 
-npx -y socialdatax-skills@latest xhs product-review-replies \
+npx -y socialdatax-skills@0.2.66 xhs product-review-replies \
   --review-id "<review_id>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-comments
 
-npx -y socialdatax-skills@latest xhs product-review-reply-replies \
+npx -y socialdatax-skills@0.2.66 xhs product-review-reply-replies \
   --review-id "<review_id>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-comments
 
-npx -y socialdatax-skills@latest wechat article-comments \
+npx -y socialdatax-skills@0.2.66 wechat article-comments \
   --url "<url>" --pretty --source-client socialdatax-skills --source-platform github \
   --source-skill media-comments
 
-npx -y socialdatax-skills@latest wechat article-replies \
+npx -y socialdatax-skills@0.2.66 wechat article-replies \
   --url "<url>" --pretty --source-client socialdatax-skills --source-platform github \
   --source-skill media-comments
 
-npx -y socialdatax-skills@latest weibo likers \
+npx -y socialdatax-skills@0.2.66 weibo likers \
   --url "<post_url>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-comments
 
-npx -y socialdatax-skills@latest weibo reposts \
+npx -y socialdatax-skills@0.2.66 weibo reposts \
   --url "<post_url>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-comments
 
-npx -y socialdatax-skills@latest tieba replies \
+npx -y socialdatax-skills@0.2.66 tieba replies \
   --thread-id "<thread_id>" --comment-id "<comment_id>" --pretty \
   --source-client socialdatax-skills --source-platform github \
   --source-skill media-comments
 
-npx -y socialdatax-skills@latest tieba comments \
+npx -y socialdatax-skills@0.2.66 tieba comments \
   --thread-id "<thread_id>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-comments
 
-npx -y socialdatax-skills@latest tieba comments \
+npx -y socialdatax-skills@0.2.66 tieba comments \
   --url "<url>" --pretty --source-client socialdatax-skills --source-platform github \
   --source-skill media-comments
 
-npx -y socialdatax-skills@latest haokan comments \
+npx -y socialdatax-skills@0.2.66 haokan comments \
   --video-id "<video_id>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-comments
 
-npx -y socialdatax-skills@latest haokan comments \
+npx -y socialdatax-skills@0.2.66 haokan comments \
   --url "<video_url>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-comments
 
-npx -y socialdatax-skills@latest haokan replies \
+npx -y socialdatax-skills@0.2.66 haokan replies \
   --video-id "<video_id>" --comment-id "<comment_id>" --pretty \
   --source-client socialdatax-skills --source-platform github \
   --source-skill media-comments
 
-npx -y socialdatax-skills@latest haokan replies \
+npx -y socialdatax-skills@0.2.66 haokan replies \
   --url "<video_url>" --comment-id "<comment_id>" --pretty \
   --source-client socialdatax-skills --source-platform github \
   --source-skill media-comments
@@ -336,7 +336,7 @@ Optional arguments:
 Use one first-level comment entrypoint shown in the CLI example at a time; do not mix multiple content identifiers in one command. For reply commands, use the platform-specific reply identifiers shown in the CLI example.
 
 The command prints JSON with `platform`, `tool`, `arguments`, and `data`. Multi-page output keeps merged primary comments in `data.items` and adds `page_count`, `item_count`, and the next-page marker. On platforms that support `--include-replies`, each first-level comment includes `replies`, `replies_page_count`, and `replies_next_page_token`.
-Use `npx -y socialdatax-skills@latest <platform> <action> --help` for exact flags and values. Paginated commands require the complete returned `next_page_token`. Do not modify, truncate, redact, mask, omit, normalize, rebuild, generate, or replace the middle with ellipses. Commands without `--page-token`, including suggestions and first-page-only searches, do not support pagination.
+Use `npx -y socialdatax-skills@0.2.66 <platform> <action> --help` for exact flags and values. Paginated commands require the complete returned `next_page_token`. Do not modify, truncate, redact, mask, omit, normalize, rebuild, generate, or replace the middle with ellipses. Commands without `--page-token`, including suggestions and first-page-only searches, do not support pagination.
 Haokan / 好看视频: choose either `--video-id` or `--url`. `comments` returns top-level comments with reply previews; use `replies` with the parent `comment_id` to page through replies. `--include-replies` is not supported. Preserve the token and the same video/comment inputs when continuing.
 For replies authored by an X creator rather than comments under a post, use `media-user-posts` with `x user-replies`.
 
