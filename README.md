@@ -103,8 +103,8 @@ Common search phrases for this skill package:
 Version `0.2.45` adds `xhs pgy-detail` and the matching `media-detail` Skill routing:
 
 ```bash
-npx -y socialdatax-skills@latest xhs pgy-detail --note-id "<note_id>" --pretty
-npx -y socialdatax-skills@latest xhs pgy-detail --url "<note_url_or_share_text>" --pretty
+npx -y socialdatax-skills@0.2.66 xhs pgy-detail --note-id "<note_id>" --pretty
+npx -y socialdatax-skills@0.2.66 xhs pgy-detail --url "<note_url_or_share_text>" --pretty
 ```
 
 Configure `SOCIALDATAX_API_KEY` before running these commands. Choose exactly one input: the complete note ID, or the original note URL, short link or share text. Each successful call costs **20 points**; failed calls are not charged. Use this route for requested 蒲公英 commercial details. Ordinary `xhs detail` stays on the public note-detail route and does not automatically switch to commercial data. Only notes from creators enrolled in 蒲公英 are eligible. When MCP structured code is `pgy_commercial_data_unavailable` (HTTP numeric code `1009`), the product treats this explicit no-commercial-data outcome as not enrolled: "该笔记所属博主未入驻蒲公英，无法查询蒲公英数据。本次查询失败，不扣费。" Use the structured code, not message text or internal reason_code, to identify this outcome. The CLI exits with status 1 and writes a JSON object containing only `code` and `message` to stderr for this outcome; stdout remains empty. Other errors retain their existing output format. Stop without retrying the other ID/URL route. Timeouts, service outages, authentication errors, insufficient balance, invalid inputs and unexplained empty responses retain their actual error or unresolved status; do not label them as not enrolled.
@@ -116,173 +116,173 @@ For most skill users, no MCP client configuration is required. Install the skill
 Examples:
 
 ```bash
-npx -y socialdatax-skills@latest haokan search --keyword "露营" --pages 2 --pretty
-npx -y socialdatax-skills@latest haokan user-posts --user-id "<user_id>" --all --pretty
-npx -y socialdatax-skills@latest xhs search --keyword "露营" --pretty
-npx -y socialdatax-skills@latest xhs search --keyword "露营" --since-days 7 --pages 2 --pretty
-npx -y socialdatax-skills@latest xhs hot-search --pretty
-npx -y socialdatax-skills@latest xhs detail --note-id "<note_id>" --pretty
-npx -y socialdatax-skills@latest xhs comments --note-id "<note_id>" --pretty
-npx -y socialdatax-skills@latest xhs comments --note-id "<note_id>" --sort-type time_descending --pretty
-npx -y socialdatax-skills@latest xhs comments --note-id "<note_id>" --all --include-replies --pretty
-npx -y socialdatax-skills@latest xhs sub-comments --note-id "<note_id>" --comment-id "<comment_id>" --pretty
-npx -y socialdatax-skills@latest xhs user-info --user-id "<user_id>" --pretty
-npx -y socialdatax-skills@latest xhs user-posts --user-id "<user_id>" --pretty
-npx -y socialdatax-skills@latest xhs user-posts --user-id "<user_id>" --since-days 30 --pretty
-npx -y socialdatax-skills@latest xhs transcript --url "<note_url_or_share_text>" --pretty
-npx -y socialdatax-skills@latest xhs transcript --note-id "<note_id>" --pretty
-npx -y socialdatax-skills@latest xhs transcript --job-id "<job_id>" --pretty
-npx -y socialdatax-skills@latest xhs download-media --url "<xhs_media_url>" --output-dir ./downloads --pretty
-npx -y socialdatax-skills@latest douyin hot-search --pretty
-npx -y socialdatax-skills@latest douyin search --keyword "露营" --pretty
-npx -y socialdatax-skills@latest douyin detail --aweme-id "<aweme_id>" --pretty
-npx -y socialdatax-skills@latest douyin share-link --aweme-id "<aweme_id>" --pretty
-npx -y socialdatax-skills@latest douyin share-link --url "<work_url_or_share_text>" --pretty
-npx -y socialdatax-skills@latest douyin comments --aweme-id "<aweme_id>" --pretty
-npx -y socialdatax-skills@latest douyin comments --aweme-id "<aweme_id>" --all --include-replies --pretty
-npx -y socialdatax-skills@latest douyin replies --aweme-id "<aweme_id>" --comment-id "<comment_id>" --pretty
-npx -y socialdatax-skills@latest douyin user-info --sec-user-id "<sec_user_id>" --pretty
-npx -y socialdatax-skills@latest douyin user-info --profile-url "<profile_url_or_share_text>" --pretty
-npx -y socialdatax-skills@latest douyin user-posts --sec-user-id "<sec_user_id>" --pretty
-npx -y socialdatax-skills@latest douyin user-posts --profile-url "<profile_url_or_share_text>" --pretty
-npx -y socialdatax-skills@latest douyin user-series --sec-user-id "<sec_user_id>" --pretty
-npx -y socialdatax-skills@latest douyin user-series --profile-url "<profile_url_or_share_text>" --pretty
-npx -y socialdatax-skills@latest douyin transcript --url "<douyin_content_url_or_share_text>" --pretty
-npx -y socialdatax-skills@latest douyin transcript --aweme-id "<aweme_id>" --pretty
-npx -y socialdatax-skills@latest douyin transcript --job-id "<job_id>" --pretty
-npx -y socialdatax-skills@latest douyin transcript --job-id "<job_id>" --srt-output ./video.srt --pretty
-npx -y socialdatax-skills@latest douyin download-media --url "<douyin_media_url>" --output-dir ./downloads --pretty
-npx -y socialdatax-skills@latest kuaishou hot-search --pretty
-npx -y socialdatax-skills@latest kuaishou search --keyword "露营" --pretty
-npx -y socialdatax-skills@latest kuaishou user-search --keyword "露营" --pretty
-npx -y socialdatax-skills@latest kuaishou detail --photo-id "<photo_id>" --pretty
-npx -y socialdatax-skills@latest kuaishou detail --url "<kuaishou_content_url_or_share_text>" --pretty
-npx -y socialdatax-skills@latest kuaishou comments --photo-id "<photo_id>" --pretty
-npx -y socialdatax-skills@latest kuaishou comments --photo-id "<photo_id>" --all --include-replies --pretty
-npx -y socialdatax-skills@latest kuaishou comments --url "<kuaishou_content_url_or_share_text>" --pretty
-npx -y socialdatax-skills@latest kuaishou replies --photo-id "<photo_id>" --comment-id "<comment_id>" --pretty
-npx -y socialdatax-skills@latest kuaishou user-info --user-id "<user_id>" --pretty
-npx -y socialdatax-skills@latest kuaishou user-info --profile-url "<profile_url_or_share_text>" --pretty
-npx -y socialdatax-skills@latest kuaishou user-posts --user-id "<user_id>" --pretty
-npx -y socialdatax-skills@latest kuaishou user-posts --profile-url "<profile_url_or_share_text>" --pretty
-npx -y socialdatax-skills@latest kuaishou transcript --url "<kuaishou_content_url_or_share_text>" --pretty
-npx -y socialdatax-skills@latest kuaishou transcript --photo-id "<photo_id>" --pretty
-npx -y socialdatax-skills@latest kuaishou transcript --job-id "<job_id>" --pretty
-npx -y socialdatax-skills@latest kuaishou download-media --url "<kuaishou_media_url>" --output-dir ./downloads --pretty
-npx -y socialdatax-skills@latest bilibili search-videos --keyword "露营" --pretty
-npx -y socialdatax-skills@latest bilibili search-articles --keyword "露营" --pretty
-npx -y socialdatax-skills@latest bilibili detail --content-id "<content_id>" --pretty
-npx -y socialdatax-skills@latest bilibili detail --url "<bilibili_content_url_or_share_text>" --pretty
-npx -y socialdatax-skills@latest bilibili comments --content-id "<content_id>" --pretty
-npx -y socialdatax-skills@latest bilibili comments --url "<bilibili_content_url_or_share_text>" --pretty
-npx -y socialdatax-skills@latest bilibili replies --comment-object-id "<comment_object_id>" --comment-object-type 1 --comment-id "<comment_id>" --pretty
-npx -y socialdatax-skills@latest bilibili reactions --post-id "<post_id>" --pretty
-npx -y socialdatax-skills@latest bilibili reactions --url "<bilibili_opus_or_dynamic_url_or_share_text>" --pretty
-npx -y socialdatax-skills@latest bilibili user-info --user-id "<user_id>" --pretty
-npx -y socialdatax-skills@latest bilibili user-info --profile-url "<profile_url_or_share_text>" --pretty
-npx -y socialdatax-skills@latest bilibili user-videos --user-id "<user_id>" --pretty
-npx -y socialdatax-skills@latest bilibili user-videos --profile-url "<profile_url_or_share_text>" --pretty
-npx -y socialdatax-skills@latest bilibili user-articles --user-id "<user_id>" --pretty
-npx -y socialdatax-skills@latest bilibili user-articles --profile-url "<profile_url_or_share_text>" --pretty
-npx -y socialdatax-skills@latest bilibili user-dynamics --user-id "<user_id>" --pretty
-npx -y socialdatax-skills@latest bilibili user-dynamics --profile-url "<profile_url_or_share_text>" --pretty
-npx -y socialdatax-skills@latest bilibili download-media --url "<bilibili_video_url_or_share_text>" --output-dir ./downloads --pretty
-npx -y socialdatax-skills@latest weibo hot-search --pretty
-npx -y socialdatax-skills@latest weibo search --keyword "露营" --pretty
-npx -y socialdatax-skills@latest weibo detail --post-id "<post_id>" --pretty
-npx -y socialdatax-skills@latest weibo detail --post-url "<weibo_post_url_or_share_text>" --pretty
-npx -y socialdatax-skills@latest weibo comments --post-id "<post_id>" --pretty
-npx -y socialdatax-skills@latest weibo comments --post-id "<post_id>" --sort-type time_descending --pretty
-npx -y socialdatax-skills@latest weibo comments --post-id "<post_id>" --all --include-replies --pretty
-npx -y socialdatax-skills@latest weibo comments --post-url "<weibo_post_url_or_share_text>" --pretty
-npx -y socialdatax-skills@latest weibo replies --post-id "<post_id>" --comment-id "<comment_id>" --pretty
-npx -y socialdatax-skills@latest weibo likers --post-id "<post_id>" --pretty
-npx -y socialdatax-skills@latest weibo reposts --post-id "<post_id>" --pretty
-npx -y socialdatax-skills@latest weibo user-info --user-id "<user_id>" --pretty
-npx -y socialdatax-skills@latest weibo user-info --profile-url "<profile_url>" --pretty
-npx -y socialdatax-skills@latest weibo user-posts --user-id "<user_id>" --pretty
-npx -y socialdatax-skills@latest weibo user-posts --profile-url "<profile_url>" --pretty
-npx -y socialdatax-skills@latest weibo transcript --post-url "<weibo_post_url_or_share_text>" --pretty
-npx -y socialdatax-skills@latest weibo transcript --post-id "<post_id>" --pretty
-npx -y socialdatax-skills@latest weibo transcript --job-id "<job_id>" --pretty
-npx -y socialdatax-skills@latest weibo download-media --url "<weibo_media_url>" --output-dir ./downloads --pretty
-npx -y socialdatax-skills@latest toutiao hot-search --pretty
-npx -y socialdatax-skills@latest toutiao search --keyword "露营" --pretty
-npx -y socialdatax-skills@latest toutiao detail --post-id "<post_id>" --pretty
-npx -y socialdatax-skills@latest toutiao detail --url "<toutiao_content_url_or_share_text>" --pretty
-npx -y socialdatax-skills@latest toutiao comments --post-id "<post_id>" --pretty
-npx -y socialdatax-skills@latest toutiao comments --post-id "<post_id>" --all --include-replies --pretty
-npx -y socialdatax-skills@latest toutiao comments --url "<toutiao_content_url_or_share_text>" --pretty
-npx -y socialdatax-skills@latest toutiao replies --comment-id "<comment_id>" --pretty
-npx -y socialdatax-skills@latest toutiao user-info --user-id "<user_id>" --pretty
-npx -y socialdatax-skills@latest toutiao user-info --profile-url "<profile_url_or_share_text>" --pretty
-npx -y socialdatax-skills@latest toutiao user-posts --user-id "<user_id>" --content-type video --pretty
-npx -y socialdatax-skills@latest toutiao user-posts --profile-url "<profile_url_or_share_text>" --pretty
-npx -y socialdatax-skills@latest wechat hot-search --pretty
-npx -y socialdatax-skills@latest wechat search --keyword "露营" --pretty
-npx -y socialdatax-skills@latest wechat detail --encrypted-object-id "<encrypted_object_id>" --pretty
-npx -y socialdatax-skills@latest wechat detail --object-id "<object_id>" --pretty
-npx -y socialdatax-skills@latest wechat detail --url "<wechat_work_url_or_share_text>" --pretty
-npx -y socialdatax-skills@latest wechat download-media --media-url "<video.video_url>" --output video.mp4
-npx -y socialdatax-skills@latest wechat article --url "<mp_article_url_or_share_text>" --pretty
-npx -y socialdatax-skills@latest wechat article-stats --url "<mp_article_url_or_share_text>" --pretty
-npx -y socialdatax-skills@latest wechat comments --object-id "<object_id>" --object-nonce-id "<object_nonce_id>" --pretty
-npx -y socialdatax-skills@latest wechat comments --object-id "<object_id>" --object-nonce-id "<object_nonce_id>" --all --include-replies --pretty
-npx -y socialdatax-skills@latest wechat comments --url "<wechat_video_url_or_share_text>" --pretty
-npx -y socialdatax-skills@latest wechat replies --object-id "<object_id>" --object-nonce-id "<object_nonce_id>" --comment-id "<comment_id>" --pretty
-npx -y socialdatax-skills@latest wechat user-info --user-id "<v2_finder_user_id>" --pretty
-npx -y socialdatax-skills@latest wechat user-info --url "<wechat_work_url_or_share_text>" --pretty
-npx -y socialdatax-skills@latest wechat user-posts --user-id "<v2_finder_user_id>" --pretty
-npx -y socialdatax-skills@latest wechat user-posts --url "<wechat_work_url_or_share_text>" --pretty
-npx -y socialdatax-skills@latest wechat transcript --url "<wechat_video_url_or_share_text>" --pretty
-npx -y socialdatax-skills@latest wechat transcript --encrypted-object-id "<encrypted_object_id>" --pretty
-npx -y socialdatax-skills@latest wechat transcript --job-id "<job_id>" --pretty
-npx -y socialdatax-skills@latest zhihu hot-list --pretty
-npx -y socialdatax-skills@latest zhihu search --keyword "露营" --pretty
-npx -y socialdatax-skills@latest zhihu detail --content-url "<zhihu_content_url_or_share_text>" --pretty
-npx -y socialdatax-skills@latest zhihu comments --content-url "<zhihu_content_url_or_share_text>" --pretty
-npx -y socialdatax-skills@latest zhihu replies --content-url "<zhihu_content_url_or_share_text>" --comment-id "<comment_id>" --pretty
-npx -y socialdatax-skills@latest zhihu user-info --profile-url "<profile_url_or_share_text>" --pretty
-npx -y socialdatax-skills@latest zhihu user-posts --profile-url "<profile_url_or_share_text>" --pretty
-npx -y socialdatax-skills@latest instagram search --keyword "camping" --pretty
-npx -y socialdatax-skills@latest instagram detail --post-id "<post_id>" --pretty
-npx -y socialdatax-skills@latest instagram detail --post-url "<instagram_post_url_or_share_text>" --pretty
-npx -y socialdatax-skills@latest instagram comments --post-url "<instagram_post_url_or_share_text>" --pretty
-npx -y socialdatax-skills@latest instagram replies --post-id "<post_id>" --comment-id "<comment_id>" --pretty
-npx -y socialdatax-skills@latest instagram user-info --username "<username>" --pretty
-npx -y socialdatax-skills@latest instagram user-info --profile-url "<profile_url_or_share_text>" --pretty
-npx -y socialdatax-skills@latest instagram user-posts --username "<username>" --pretty
-npx -y socialdatax-skills@latest instagram user-posts --profile-url "<profile_url_or_share_text>" --pretty
-npx -y socialdatax-skills@latest x search --keyword "camping" --pretty
-npx -y socialdatax-skills@latest x detail --post-id "<post_id>" --pretty
-npx -y socialdatax-skills@latest x detail --post-url "<x_post_url_or_share_text>" --pretty
-npx -y socialdatax-skills@latest x comments --post-id "<post_id>" --pretty
-npx -y socialdatax-skills@latest x comments --post-url "<x_post_url_or_share_text>" --pretty
-npx -y socialdatax-skills@latest x replies --post-id "<post_id>" --comment-id "<comment_id>" --pretty
-npx -y socialdatax-skills@latest x user-info --user-id "<user_id>" --pretty
-npx -y socialdatax-skills@latest x user-info --username "<username>" --pretty
-npx -y socialdatax-skills@latest x user-info --profile-url "<profile_url_or_share_text>" --pretty
-npx -y socialdatax-skills@latest x user-posts --user-id "<user_id>" --pretty
-npx -y socialdatax-skills@latest x user-posts --username "<username>" --pretty
-npx -y socialdatax-skills@latest x user-posts --profile-url "<profile_url_or_share_text>" --pretty
-npx -y socialdatax-skills@latest x user-replies --username "<username>" --all --pretty
-npx -y socialdatax-skills@latest x download-media --url "<x_media_url>" --output-dir ./downloads --pretty
-npx -y socialdatax-skills@latest youtube search --keyword "camping" --pretty
-npx -y socialdatax-skills@latest youtube detail --url "<youtube_video_url>" --pretty
-npx -y socialdatax-skills@latest youtube comments --url "<youtube_video_url>" --pretty
-npx -y socialdatax-skills@latest youtube replies --reply-token "<reply_token>" --pretty
-npx -y socialdatax-skills@latest youtube channel-info --channel-url "<youtube_channel_url>" --pretty
-npx -y socialdatax-skills@latest youtube user-posts --channel-url "<youtube_channel_url>" --pretty
-npx -y socialdatax-skills@latest tiktok search --keyword "camping" --pretty
-npx -y socialdatax-skills@latest tiktok detail --url "<tiktok_post_url_or_share_text>" --pretty
-npx -y socialdatax-skills@latest tiktok comments --post-id "<post_id>" --pretty
-npx -y socialdatax-skills@latest tiktok comments --url "<tiktok_post_url_or_share_text>" --pretty
-npx -y socialdatax-skills@latest tiktok replies --post-id "<post_id>" --comment-id "<comment_id>" --pretty
-npx -y socialdatax-skills@latest tiktok user-info --tiktok-id "<tiktok_id>" --pretty
-npx -y socialdatax-skills@latest tiktok user-info --profile-url "<profile_url_or_share_text>" --pretty
-npx -y socialdatax-skills@latest tiktok user-posts --tiktok-id "<tiktok_id>" --pretty
-npx -y socialdatax-skills@latest tiktok user-posts --profile-url "<profile_url_or_share_text>" --pretty
-npx -y socialdatax-skills@latest sensitive-check text --text "<content>" --platform xhs --pretty
+npx -y socialdatax-skills@0.2.66 haokan search --keyword "露营" --pages 2 --pretty
+npx -y socialdatax-skills@0.2.66 haokan user-posts --user-id "<user_id>" --all --pretty
+npx -y socialdatax-skills@0.2.66 xhs search --keyword "露营" --pretty
+npx -y socialdatax-skills@0.2.66 xhs search --keyword "露营" --since-days 7 --pages 2 --pretty
+npx -y socialdatax-skills@0.2.66 xhs hot-search --pretty
+npx -y socialdatax-skills@0.2.66 xhs detail --note-id "<note_id>" --pretty
+npx -y socialdatax-skills@0.2.66 xhs comments --note-id "<note_id>" --pretty
+npx -y socialdatax-skills@0.2.66 xhs comments --note-id "<note_id>" --sort-type time_descending --pretty
+npx -y socialdatax-skills@0.2.66 xhs comments --note-id "<note_id>" --all --include-replies --pretty
+npx -y socialdatax-skills@0.2.66 xhs sub-comments --note-id "<note_id>" --comment-id "<comment_id>" --pretty
+npx -y socialdatax-skills@0.2.66 xhs user-info --user-id "<user_id>" --pretty
+npx -y socialdatax-skills@0.2.66 xhs user-posts --user-id "<user_id>" --pretty
+npx -y socialdatax-skills@0.2.66 xhs user-posts --user-id "<user_id>" --since-days 30 --pretty
+npx -y socialdatax-skills@0.2.66 xhs transcript --url "<note_url_or_share_text>" --pretty
+npx -y socialdatax-skills@0.2.66 xhs transcript --note-id "<note_id>" --pretty
+npx -y socialdatax-skills@0.2.66 xhs transcript --job-id "<job_id>" --pretty
+npx -y socialdatax-skills@0.2.66 xhs download-media --url "<xhs_media_url>" --output-dir ./downloads --pretty
+npx -y socialdatax-skills@0.2.66 douyin hot-search --pretty
+npx -y socialdatax-skills@0.2.66 douyin search --keyword "露营" --pretty
+npx -y socialdatax-skills@0.2.66 douyin detail --aweme-id "<aweme_id>" --pretty
+npx -y socialdatax-skills@0.2.66 douyin share-link --aweme-id "<aweme_id>" --pretty
+npx -y socialdatax-skills@0.2.66 douyin share-link --url "<work_url_or_share_text>" --pretty
+npx -y socialdatax-skills@0.2.66 douyin comments --aweme-id "<aweme_id>" --pretty
+npx -y socialdatax-skills@0.2.66 douyin comments --aweme-id "<aweme_id>" --all --include-replies --pretty
+npx -y socialdatax-skills@0.2.66 douyin replies --aweme-id "<aweme_id>" --comment-id "<comment_id>" --pretty
+npx -y socialdatax-skills@0.2.66 douyin user-info --sec-user-id "<sec_user_id>" --pretty
+npx -y socialdatax-skills@0.2.66 douyin user-info --profile-url "<profile_url_or_share_text>" --pretty
+npx -y socialdatax-skills@0.2.66 douyin user-posts --sec-user-id "<sec_user_id>" --pretty
+npx -y socialdatax-skills@0.2.66 douyin user-posts --profile-url "<profile_url_or_share_text>" --pretty
+npx -y socialdatax-skills@0.2.66 douyin user-series --sec-user-id "<sec_user_id>" --pretty
+npx -y socialdatax-skills@0.2.66 douyin user-series --profile-url "<profile_url_or_share_text>" --pretty
+npx -y socialdatax-skills@0.2.66 douyin transcript --url "<douyin_content_url_or_share_text>" --pretty
+npx -y socialdatax-skills@0.2.66 douyin transcript --aweme-id "<aweme_id>" --pretty
+npx -y socialdatax-skills@0.2.66 douyin transcript --job-id "<job_id>" --pretty
+npx -y socialdatax-skills@0.2.66 douyin transcript --job-id "<job_id>" --srt-output ./video.srt --pretty
+npx -y socialdatax-skills@0.2.66 douyin download-media --url "<douyin_media_url>" --output-dir ./downloads --pretty
+npx -y socialdatax-skills@0.2.66 kuaishou hot-search --pretty
+npx -y socialdatax-skills@0.2.66 kuaishou search --keyword "露营" --pretty
+npx -y socialdatax-skills@0.2.66 kuaishou user-search --keyword "露营" --pretty
+npx -y socialdatax-skills@0.2.66 kuaishou detail --photo-id "<photo_id>" --pretty
+npx -y socialdatax-skills@0.2.66 kuaishou detail --url "<kuaishou_content_url_or_share_text>" --pretty
+npx -y socialdatax-skills@0.2.66 kuaishou comments --photo-id "<photo_id>" --pretty
+npx -y socialdatax-skills@0.2.66 kuaishou comments --photo-id "<photo_id>" --all --include-replies --pretty
+npx -y socialdatax-skills@0.2.66 kuaishou comments --url "<kuaishou_content_url_or_share_text>" --pretty
+npx -y socialdatax-skills@0.2.66 kuaishou replies --photo-id "<photo_id>" --comment-id "<comment_id>" --pretty
+npx -y socialdatax-skills@0.2.66 kuaishou user-info --user-id "<user_id>" --pretty
+npx -y socialdatax-skills@0.2.66 kuaishou user-info --profile-url "<profile_url_or_share_text>" --pretty
+npx -y socialdatax-skills@0.2.66 kuaishou user-posts --user-id "<user_id>" --pretty
+npx -y socialdatax-skills@0.2.66 kuaishou user-posts --profile-url "<profile_url_or_share_text>" --pretty
+npx -y socialdatax-skills@0.2.66 kuaishou transcript --url "<kuaishou_content_url_or_share_text>" --pretty
+npx -y socialdatax-skills@0.2.66 kuaishou transcript --photo-id "<photo_id>" --pretty
+npx -y socialdatax-skills@0.2.66 kuaishou transcript --job-id "<job_id>" --pretty
+npx -y socialdatax-skills@0.2.66 kuaishou download-media --url "<kuaishou_media_url>" --output-dir ./downloads --pretty
+npx -y socialdatax-skills@0.2.66 bilibili search-videos --keyword "露营" --pretty
+npx -y socialdatax-skills@0.2.66 bilibili search-articles --keyword "露营" --pretty
+npx -y socialdatax-skills@0.2.66 bilibili detail --content-id "<content_id>" --pretty
+npx -y socialdatax-skills@0.2.66 bilibili detail --url "<bilibili_content_url_or_share_text>" --pretty
+npx -y socialdatax-skills@0.2.66 bilibili comments --content-id "<content_id>" --pretty
+npx -y socialdatax-skills@0.2.66 bilibili comments --url "<bilibili_content_url_or_share_text>" --pretty
+npx -y socialdatax-skills@0.2.66 bilibili replies --comment-object-id "<comment_object_id>" --comment-object-type 1 --comment-id "<comment_id>" --pretty
+npx -y socialdatax-skills@0.2.66 bilibili reactions --post-id "<post_id>" --pretty
+npx -y socialdatax-skills@0.2.66 bilibili reactions --url "<bilibili_opus_or_dynamic_url_or_share_text>" --pretty
+npx -y socialdatax-skills@0.2.66 bilibili user-info --user-id "<user_id>" --pretty
+npx -y socialdatax-skills@0.2.66 bilibili user-info --profile-url "<profile_url_or_share_text>" --pretty
+npx -y socialdatax-skills@0.2.66 bilibili user-videos --user-id "<user_id>" --pretty
+npx -y socialdatax-skills@0.2.66 bilibili user-videos --profile-url "<profile_url_or_share_text>" --pretty
+npx -y socialdatax-skills@0.2.66 bilibili user-articles --user-id "<user_id>" --pretty
+npx -y socialdatax-skills@0.2.66 bilibili user-articles --profile-url "<profile_url_or_share_text>" --pretty
+npx -y socialdatax-skills@0.2.66 bilibili user-dynamics --user-id "<user_id>" --pretty
+npx -y socialdatax-skills@0.2.66 bilibili user-dynamics --profile-url "<profile_url_or_share_text>" --pretty
+npx -y socialdatax-skills@0.2.66 bilibili download-media --url "<bilibili_video_url_or_share_text>" --output-dir ./downloads --pretty
+npx -y socialdatax-skills@0.2.66 weibo hot-search --pretty
+npx -y socialdatax-skills@0.2.66 weibo search --keyword "露营" --pretty
+npx -y socialdatax-skills@0.2.66 weibo detail --post-id "<post_id>" --pretty
+npx -y socialdatax-skills@0.2.66 weibo detail --post-url "<weibo_post_url_or_share_text>" --pretty
+npx -y socialdatax-skills@0.2.66 weibo comments --post-id "<post_id>" --pretty
+npx -y socialdatax-skills@0.2.66 weibo comments --post-id "<post_id>" --sort-type time_descending --pretty
+npx -y socialdatax-skills@0.2.66 weibo comments --post-id "<post_id>" --all --include-replies --pretty
+npx -y socialdatax-skills@0.2.66 weibo comments --post-url "<weibo_post_url_or_share_text>" --pretty
+npx -y socialdatax-skills@0.2.66 weibo replies --post-id "<post_id>" --comment-id "<comment_id>" --pretty
+npx -y socialdatax-skills@0.2.66 weibo likers --post-id "<post_id>" --pretty
+npx -y socialdatax-skills@0.2.66 weibo reposts --post-id "<post_id>" --pretty
+npx -y socialdatax-skills@0.2.66 weibo user-info --user-id "<user_id>" --pretty
+npx -y socialdatax-skills@0.2.66 weibo user-info --profile-url "<profile_url>" --pretty
+npx -y socialdatax-skills@0.2.66 weibo user-posts --user-id "<user_id>" --pretty
+npx -y socialdatax-skills@0.2.66 weibo user-posts --profile-url "<profile_url>" --pretty
+npx -y socialdatax-skills@0.2.66 weibo transcript --post-url "<weibo_post_url_or_share_text>" --pretty
+npx -y socialdatax-skills@0.2.66 weibo transcript --post-id "<post_id>" --pretty
+npx -y socialdatax-skills@0.2.66 weibo transcript --job-id "<job_id>" --pretty
+npx -y socialdatax-skills@0.2.66 weibo download-media --url "<weibo_media_url>" --output-dir ./downloads --pretty
+npx -y socialdatax-skills@0.2.66 toutiao hot-search --pretty
+npx -y socialdatax-skills@0.2.66 toutiao search --keyword "露营" --pretty
+npx -y socialdatax-skills@0.2.66 toutiao detail --post-id "<post_id>" --pretty
+npx -y socialdatax-skills@0.2.66 toutiao detail --url "<toutiao_content_url_or_share_text>" --pretty
+npx -y socialdatax-skills@0.2.66 toutiao comments --post-id "<post_id>" --pretty
+npx -y socialdatax-skills@0.2.66 toutiao comments --post-id "<post_id>" --all --include-replies --pretty
+npx -y socialdatax-skills@0.2.66 toutiao comments --url "<toutiao_content_url_or_share_text>" --pretty
+npx -y socialdatax-skills@0.2.66 toutiao replies --comment-id "<comment_id>" --pretty
+npx -y socialdatax-skills@0.2.66 toutiao user-info --user-id "<user_id>" --pretty
+npx -y socialdatax-skills@0.2.66 toutiao user-info --profile-url "<profile_url_or_share_text>" --pretty
+npx -y socialdatax-skills@0.2.66 toutiao user-posts --user-id "<user_id>" --content-type video --pretty
+npx -y socialdatax-skills@0.2.66 toutiao user-posts --profile-url "<profile_url_or_share_text>" --pretty
+npx -y socialdatax-skills@0.2.66 wechat hot-search --pretty
+npx -y socialdatax-skills@0.2.66 wechat search --keyword "露营" --pretty
+npx -y socialdatax-skills@0.2.66 wechat detail --encrypted-object-id "<encrypted_object_id>" --pretty
+npx -y socialdatax-skills@0.2.66 wechat detail --object-id "<object_id>" --pretty
+npx -y socialdatax-skills@0.2.66 wechat detail --url "<wechat_work_url_or_share_text>" --pretty
+npx -y socialdatax-skills@0.2.66 wechat download-media --media-url "<video.video_url>" --output video.mp4
+npx -y socialdatax-skills@0.2.66 wechat article --url "<mp_article_url_or_share_text>" --pretty
+npx -y socialdatax-skills@0.2.66 wechat article-stats --url "<mp_article_url_or_share_text>" --pretty
+npx -y socialdatax-skills@0.2.66 wechat comments --object-id "<object_id>" --object-nonce-id "<object_nonce_id>" --pretty
+npx -y socialdatax-skills@0.2.66 wechat comments --object-id "<object_id>" --object-nonce-id "<object_nonce_id>" --all --include-replies --pretty
+npx -y socialdatax-skills@0.2.66 wechat comments --url "<wechat_video_url_or_share_text>" --pretty
+npx -y socialdatax-skills@0.2.66 wechat replies --object-id "<object_id>" --object-nonce-id "<object_nonce_id>" --comment-id "<comment_id>" --pretty
+npx -y socialdatax-skills@0.2.66 wechat user-info --user-id "<v2_finder_user_id>" --pretty
+npx -y socialdatax-skills@0.2.66 wechat user-info --url "<wechat_work_url_or_share_text>" --pretty
+npx -y socialdatax-skills@0.2.66 wechat user-posts --user-id "<v2_finder_user_id>" --pretty
+npx -y socialdatax-skills@0.2.66 wechat user-posts --url "<wechat_work_url_or_share_text>" --pretty
+npx -y socialdatax-skills@0.2.66 wechat transcript --url "<wechat_video_url_or_share_text>" --pretty
+npx -y socialdatax-skills@0.2.66 wechat transcript --encrypted-object-id "<encrypted_object_id>" --pretty
+npx -y socialdatax-skills@0.2.66 wechat transcript --job-id "<job_id>" --pretty
+npx -y socialdatax-skills@0.2.66 zhihu hot-list --pretty
+npx -y socialdatax-skills@0.2.66 zhihu search --keyword "露营" --pretty
+npx -y socialdatax-skills@0.2.66 zhihu detail --content-url "<zhihu_content_url_or_share_text>" --pretty
+npx -y socialdatax-skills@0.2.66 zhihu comments --content-url "<zhihu_content_url_or_share_text>" --pretty
+npx -y socialdatax-skills@0.2.66 zhihu replies --content-url "<zhihu_content_url_or_share_text>" --comment-id "<comment_id>" --pretty
+npx -y socialdatax-skills@0.2.66 zhihu user-info --profile-url "<profile_url_or_share_text>" --pretty
+npx -y socialdatax-skills@0.2.66 zhihu user-posts --profile-url "<profile_url_or_share_text>" --pretty
+npx -y socialdatax-skills@0.2.66 instagram search --keyword "camping" --pretty
+npx -y socialdatax-skills@0.2.66 instagram detail --post-id "<post_id>" --pretty
+npx -y socialdatax-skills@0.2.66 instagram detail --post-url "<instagram_post_url_or_share_text>" --pretty
+npx -y socialdatax-skills@0.2.66 instagram comments --post-url "<instagram_post_url_or_share_text>" --pretty
+npx -y socialdatax-skills@0.2.66 instagram replies --post-id "<post_id>" --comment-id "<comment_id>" --pretty
+npx -y socialdatax-skills@0.2.66 instagram user-info --username "<username>" --pretty
+npx -y socialdatax-skills@0.2.66 instagram user-info --profile-url "<profile_url_or_share_text>" --pretty
+npx -y socialdatax-skills@0.2.66 instagram user-posts --username "<username>" --pretty
+npx -y socialdatax-skills@0.2.66 instagram user-posts --profile-url "<profile_url_or_share_text>" --pretty
+npx -y socialdatax-skills@0.2.66 x search --keyword "camping" --pretty
+npx -y socialdatax-skills@0.2.66 x detail --post-id "<post_id>" --pretty
+npx -y socialdatax-skills@0.2.66 x detail --post-url "<x_post_url_or_share_text>" --pretty
+npx -y socialdatax-skills@0.2.66 x comments --post-id "<post_id>" --pretty
+npx -y socialdatax-skills@0.2.66 x comments --post-url "<x_post_url_or_share_text>" --pretty
+npx -y socialdatax-skills@0.2.66 x replies --post-id "<post_id>" --comment-id "<comment_id>" --pretty
+npx -y socialdatax-skills@0.2.66 x user-info --user-id "<user_id>" --pretty
+npx -y socialdatax-skills@0.2.66 x user-info --username "<username>" --pretty
+npx -y socialdatax-skills@0.2.66 x user-info --profile-url "<profile_url_or_share_text>" --pretty
+npx -y socialdatax-skills@0.2.66 x user-posts --user-id "<user_id>" --pretty
+npx -y socialdatax-skills@0.2.66 x user-posts --username "<username>" --pretty
+npx -y socialdatax-skills@0.2.66 x user-posts --profile-url "<profile_url_or_share_text>" --pretty
+npx -y socialdatax-skills@0.2.66 x user-replies --username "<username>" --all --pretty
+npx -y socialdatax-skills@0.2.66 x download-media --url "<x_media_url>" --output-dir ./downloads --pretty
+npx -y socialdatax-skills@0.2.66 youtube search --keyword "camping" --pretty
+npx -y socialdatax-skills@0.2.66 youtube detail --url "<youtube_video_url>" --pretty
+npx -y socialdatax-skills@0.2.66 youtube comments --url "<youtube_video_url>" --pretty
+npx -y socialdatax-skills@0.2.66 youtube replies --reply-token "<reply_token>" --pretty
+npx -y socialdatax-skills@0.2.66 youtube channel-info --channel-url "<youtube_channel_url>" --pretty
+npx -y socialdatax-skills@0.2.66 youtube user-posts --channel-url "<youtube_channel_url>" --pretty
+npx -y socialdatax-skills@0.2.66 tiktok search --keyword "camping" --pretty
+npx -y socialdatax-skills@0.2.66 tiktok detail --url "<tiktok_post_url_or_share_text>" --pretty
+npx -y socialdatax-skills@0.2.66 tiktok comments --post-id "<post_id>" --pretty
+npx -y socialdatax-skills@0.2.66 tiktok comments --url "<tiktok_post_url_or_share_text>" --pretty
+npx -y socialdatax-skills@0.2.66 tiktok replies --post-id "<post_id>" --comment-id "<comment_id>" --pretty
+npx -y socialdatax-skills@0.2.66 tiktok user-info --tiktok-id "<tiktok_id>" --pretty
+npx -y socialdatax-skills@0.2.66 tiktok user-info --profile-url "<profile_url_or_share_text>" --pretty
+npx -y socialdatax-skills@0.2.66 tiktok user-posts --tiktok-id "<tiktok_id>" --pretty
+npx -y socialdatax-skills@0.2.66 tiktok user-posts --profile-url "<profile_url_or_share_text>" --pretty
+npx -y socialdatax-skills@0.2.66 sensitive-check text --text "<content>" --platform xhs --pretty
 ```
 
 Most direct CLI commands print a JSON envelope with `platform`, `tool`, `arguments`, and `data`. `sensitive-check` prints `platform`, `tool`, and `data` only; it does not echo the original text in CLI output. `wechat download-media` is a local save command: pass the `video.video_url` returned by WeChat detail and an `--output` file path. It saves the media locally, decrypts when needed, and does not require `SOCIALDATAX_API_KEY`. `xhs/douyin/kuaishou/weibo download-media` is also local: pass one media URL returned by detail and either `--output <file>` or `--output-dir <directory>`. `x download-media` accepts one X media URL returned by search or detail. These local commands write through a `.part` file, resume partial downloads when the server supports range requests, skip an already existing output file, and infer common image/video/audio extensions in `--output-dir` mode. X / Twitter media URLs are served from overseas CDN domains such as `pbs.twimg.com` and `video.twimg.com`; if the local download times out, make the CLI process use a proxy with `--proxy "http://127.0.0.1:7890"` or `HTTP_PROXY` / `HTTPS_PROXY` / `ALL_PROXY`, then retry.
@@ -291,24 +291,24 @@ Most direct CLI commands print a JSON envelope with `platform`, `tool`, `argumen
 The following six platforms also support direct CLI transcripts. Pass exactly one URL, content ID, or existing job ID:
 
 ```bash
-npx -y socialdatax-skills@latest bilibili transcript --url "<video_url>" --pretty
-npx -y socialdatax-skills@latest bilibili transcript --bvid "<bvid>" --pretty
-npx -y socialdatax-skills@latest bilibili transcript --job-id "<job_id>" --pretty
-npx -y socialdatax-skills@latest zhihu transcript --url "<video_url>" --pretty
-npx -y socialdatax-skills@latest zhihu transcript --zvideo-id "<zvideo_id>" --pretty
-npx -y socialdatax-skills@latest zhihu transcript --job-id "<job_id>" --pretty
-npx -y socialdatax-skills@latest instagram transcript --url "<post_url>" --pretty
-npx -y socialdatax-skills@latest instagram transcript --post-id "<post_id>" --pretty
-npx -y socialdatax-skills@latest instagram transcript --job-id "<job_id>" --pretty
-npx -y socialdatax-skills@latest x transcript --url "<post_url>" --pretty
-npx -y socialdatax-skills@latest x transcript --post-id "<post_id>" --pretty
-npx -y socialdatax-skills@latest x transcript --job-id "<job_id>" --pretty
-npx -y socialdatax-skills@latest tiktok transcript --url "<video_url>" --pretty
-npx -y socialdatax-skills@latest tiktok transcript --aweme-id "<aweme_id>" --pretty
-npx -y socialdatax-skills@latest tiktok transcript --job-id "<job_id>" --pretty
-npx -y socialdatax-skills@latest youtube transcript --url "<video_url>" --pretty
-npx -y socialdatax-skills@latest youtube transcript --video-id "<video_id>" --pretty
-npx -y socialdatax-skills@latest youtube transcript --job-id "<job_id>" --pretty
+npx -y socialdatax-skills@0.2.66 bilibili transcript --url "<video_url>" --pretty
+npx -y socialdatax-skills@0.2.66 bilibili transcript --bvid "<bvid>" --pretty
+npx -y socialdatax-skills@0.2.66 bilibili transcript --job-id "<job_id>" --pretty
+npx -y socialdatax-skills@0.2.66 zhihu transcript --url "<video_url>" --pretty
+npx -y socialdatax-skills@0.2.66 zhihu transcript --zvideo-id "<zvideo_id>" --pretty
+npx -y socialdatax-skills@0.2.66 zhihu transcript --job-id "<job_id>" --pretty
+npx -y socialdatax-skills@0.2.66 instagram transcript --url "<post_url>" --pretty
+npx -y socialdatax-skills@0.2.66 instagram transcript --post-id "<post_id>" --pretty
+npx -y socialdatax-skills@0.2.66 instagram transcript --job-id "<job_id>" --pretty
+npx -y socialdatax-skills@0.2.66 x transcript --url "<post_url>" --pretty
+npx -y socialdatax-skills@0.2.66 x transcript --post-id "<post_id>" --pretty
+npx -y socialdatax-skills@0.2.66 x transcript --job-id "<job_id>" --pretty
+npx -y socialdatax-skills@0.2.66 tiktok transcript --url "<video_url>" --pretty
+npx -y socialdatax-skills@0.2.66 tiktok transcript --aweme-id "<aweme_id>" --pretty
+npx -y socialdatax-skills@0.2.66 tiktok transcript --job-id "<job_id>" --pretty
+npx -y socialdatax-skills@0.2.66 youtube transcript --url "<video_url>" --pretty
+npx -y socialdatax-skills@0.2.66 youtube transcript --video-id "<video_id>" --pretty
+npx -y socialdatax-skills@0.2.66 youtube transcript --job-id "<job_id>" --pretty
 ```
 
 For transcript commands, the direct CLI tries to deliver the final result in one run: submit may wait up to 240 seconds, and if `data.is_terminal` is not `true`, the CLI automatically continues matching get-job requests for up to 1200 seconds by default, with each get-job request waiting up to 240 seconds. Use positive `--max-wait-seconds <seconds>` to tune that follow-up window. Do not submit a duplicate transcript job just to poll status.
@@ -399,8 +399,8 @@ search supports `--content-type all|video|image`.
 You can inspect the package safety summary before installing:
 
 ```bash
-npx -y socialdatax-skills@latest doctor
-npx -y socialdatax-skills@latest doctor --json
+npx -y socialdatax-skills@0.2.66 doctor
+npx -y socialdatax-skills@0.2.66 doctor --json
 ```
 
 The public package declares no npm lifecycle scripts such as `preinstall`, `install`, or `postinstall`. The installer copies Skill files only, does not save API keys, and does not change MCP server configuration. Authenticated data calls require `SOCIALDATAX_API_KEY` at runtime, do not read local browser data, and do not perform account actions.
@@ -458,62 +458,62 @@ docker build --build-arg NODE_IMAGE=mirror.gcr.io/library/node:22-alpine -t soci
 The npm package also ships separate skills for each major capability. Different clients can install one skill, several skills, or all skills into their expected directory:
 
 ```bash
-npx -y socialdatax-skills@latest list
-npx -y socialdatax-skills@latest doctor
-npx -y socialdatax-skills@latest install --target openclaw
-npx -y socialdatax-skills@latest install --target openclaw --dry-run
-npx -y socialdatax-skills@latest install socialdatax-content-research-assistant --target openclaw
-npx -y socialdatax-skills@latest install media-search --target openclaw
-npx -y socialdatax-skills@latest install media-search --target openclaw --dry-run
-npx -y socialdatax-skills@latest install media-user-info --target openclaw
-npx -y socialdatax-skills@latest install media-comments media-detail --target openclaw
-npx -y socialdatax-skills@latest install media-transcript --target openclaw
-npx -y socialdatax-skills@latest install media-search --target openclaw --scope workspace
-npx -y socialdatax-skills@latest install media-search --target hermes
-npx -y socialdatax-skills@latest install media-search --target hermes --scope shared
-npx -y socialdatax-skills@latest install media-search --target agents
-npx -y socialdatax-skills@latest install media-search --target codex
-npx -y socialdatax-skills@latest install media-search --target codex --scope workspace
-npx -y socialdatax-skills@latest install media-search --target claude-code
-npx -y socialdatax-skills@latest install media-search --target claude-code --scope workspace
-npx -y socialdatax-skills@latest install --path ~/.workbuddy/skills/
-npx -y socialdatax-skills@latest install media-search --path ~/.workbuddy/skills/media-search
-npx -y socialdatax-skills@latest xhs search --keyword "露营" --pretty
-npx -y socialdatax-skills@latest xhs hot-search --pretty
-npx -y socialdatax-skills@latest xhs transcript --url "<note_url_or_share_text>" --pretty
-npx -y socialdatax-skills@latest douyin hot-search --pretty
-npx -y socialdatax-skills@latest douyin search --keyword "露营" --pretty
-npx -y socialdatax-skills@latest douyin user-series --sec-user-id "<sec_user_id>" --pretty
-npx -y socialdatax-skills@latest douyin transcript --aweme-id "<aweme_id>" --pretty
-npx -y socialdatax-skills@latest douyin download-media --url "<douyin_media_url>" --output-dir ./downloads --pretty
-npx -y socialdatax-skills@latest kuaishou hot-search --pretty
-npx -y socialdatax-skills@latest kuaishou search --keyword "露营" --pretty
-npx -y socialdatax-skills@latest kuaishou transcript --photo-id "<photo_id>" --pretty
-npx -y socialdatax-skills@latest kuaishou download-media --url "<kuaishou_media_url>" --output-dir ./downloads --pretty
-npx -y socialdatax-skills@latest bilibili search-videos --keyword "露营" --pretty
-npx -y socialdatax-skills@latest bilibili download-media --url "<bilibili_video_url_or_share_text>" --output-dir ./downloads --pretty
-npx -y socialdatax-skills@latest weibo hot-search --pretty
-npx -y socialdatax-skills@latest weibo search --keyword "露营" --pretty
-npx -y socialdatax-skills@latest weibo transcript --post-id "<post_id>" --pretty
-npx -y socialdatax-skills@latest weibo download-media --url "<weibo_media_url>" --output-dir ./downloads --pretty
-npx -y socialdatax-skills@latest toutiao hot-search --pretty
-npx -y socialdatax-skills@latest toutiao search --keyword "露营" --pretty
-npx -y socialdatax-skills@latest toutiao detail --post-id "<post_id>" --pretty
-npx -y socialdatax-skills@latest toutiao comments --post-id "<post_id>" --all --include-replies --pretty
-npx -y socialdatax-skills@latest toutiao user-info --user-id "<user_id>" --pretty
-npx -y socialdatax-skills@latest toutiao user-posts --user-id "<user_id>" --content-type video --pretty
-npx -y socialdatax-skills@latest wechat hot-search --pretty
-npx -y socialdatax-skills@latest wechat search --keyword "露营" --pretty
-npx -y socialdatax-skills@latest wechat article --url "<mp_article_url_or_share_text>" --pretty
-npx -y socialdatax-skills@latest wechat article-stats --url "<mp_article_url_or_share_text>" --pretty
-npx -y socialdatax-skills@latest wechat transcript --encrypted-object-id "<encrypted_object_id>" --pretty
-npx -y socialdatax-skills@latest zhihu search --keyword "露营" --pretty
-npx -y socialdatax-skills@latest instagram search --keyword "camping" --pretty
-npx -y socialdatax-skills@latest x search --keyword "camping" --pretty
-npx -y socialdatax-skills@latest x download-media --url "<x_media_url>" --output-dir ./downloads --pretty
-npx -y socialdatax-skills@latest youtube search --keyword "camping" --pretty
-npx -y socialdatax-skills@latest tiktok search --keyword "camping" --pretty
-npx -y socialdatax-skills@latest sensitive-check text --text "<content>" --platform xhs --pretty
+npx -y socialdatax-skills@0.2.66 list
+npx -y socialdatax-skills@0.2.66 doctor
+npx -y socialdatax-skills@0.2.66 install --target openclaw
+npx -y socialdatax-skills@0.2.66 install --target openclaw --dry-run
+npx -y socialdatax-skills@0.2.66 install socialdatax-content-research-assistant --target openclaw
+npx -y socialdatax-skills@0.2.66 install media-search --target openclaw
+npx -y socialdatax-skills@0.2.66 install media-search --target openclaw --dry-run
+npx -y socialdatax-skills@0.2.66 install media-user-info --target openclaw
+npx -y socialdatax-skills@0.2.66 install media-comments media-detail --target openclaw
+npx -y socialdatax-skills@0.2.66 install media-transcript --target openclaw
+npx -y socialdatax-skills@0.2.66 install media-search --target openclaw --scope workspace
+npx -y socialdatax-skills@0.2.66 install media-search --target hermes
+npx -y socialdatax-skills@0.2.66 install media-search --target hermes --scope shared
+npx -y socialdatax-skills@0.2.66 install media-search --target agents
+npx -y socialdatax-skills@0.2.66 install media-search --target codex
+npx -y socialdatax-skills@0.2.66 install media-search --target codex --scope workspace
+npx -y socialdatax-skills@0.2.66 install media-search --target claude-code
+npx -y socialdatax-skills@0.2.66 install media-search --target claude-code --scope workspace
+npx -y socialdatax-skills@0.2.66 install --path ~/.workbuddy/skills/
+npx -y socialdatax-skills@0.2.66 install media-search --path ~/.workbuddy/skills/media-search
+npx -y socialdatax-skills@0.2.66 xhs search --keyword "露营" --pretty
+npx -y socialdatax-skills@0.2.66 xhs hot-search --pretty
+npx -y socialdatax-skills@0.2.66 xhs transcript --url "<note_url_or_share_text>" --pretty
+npx -y socialdatax-skills@0.2.66 douyin hot-search --pretty
+npx -y socialdatax-skills@0.2.66 douyin search --keyword "露营" --pretty
+npx -y socialdatax-skills@0.2.66 douyin user-series --sec-user-id "<sec_user_id>" --pretty
+npx -y socialdatax-skills@0.2.66 douyin transcript --aweme-id "<aweme_id>" --pretty
+npx -y socialdatax-skills@0.2.66 douyin download-media --url "<douyin_media_url>" --output-dir ./downloads --pretty
+npx -y socialdatax-skills@0.2.66 kuaishou hot-search --pretty
+npx -y socialdatax-skills@0.2.66 kuaishou search --keyword "露营" --pretty
+npx -y socialdatax-skills@0.2.66 kuaishou transcript --photo-id "<photo_id>" --pretty
+npx -y socialdatax-skills@0.2.66 kuaishou download-media --url "<kuaishou_media_url>" --output-dir ./downloads --pretty
+npx -y socialdatax-skills@0.2.66 bilibili search-videos --keyword "露营" --pretty
+npx -y socialdatax-skills@0.2.66 bilibili download-media --url "<bilibili_video_url_or_share_text>" --output-dir ./downloads --pretty
+npx -y socialdatax-skills@0.2.66 weibo hot-search --pretty
+npx -y socialdatax-skills@0.2.66 weibo search --keyword "露营" --pretty
+npx -y socialdatax-skills@0.2.66 weibo transcript --post-id "<post_id>" --pretty
+npx -y socialdatax-skills@0.2.66 weibo download-media --url "<weibo_media_url>" --output-dir ./downloads --pretty
+npx -y socialdatax-skills@0.2.66 toutiao hot-search --pretty
+npx -y socialdatax-skills@0.2.66 toutiao search --keyword "露营" --pretty
+npx -y socialdatax-skills@0.2.66 toutiao detail --post-id "<post_id>" --pretty
+npx -y socialdatax-skills@0.2.66 toutiao comments --post-id "<post_id>" --all --include-replies --pretty
+npx -y socialdatax-skills@0.2.66 toutiao user-info --user-id "<user_id>" --pretty
+npx -y socialdatax-skills@0.2.66 toutiao user-posts --user-id "<user_id>" --content-type video --pretty
+npx -y socialdatax-skills@0.2.66 wechat hot-search --pretty
+npx -y socialdatax-skills@0.2.66 wechat search --keyword "露营" --pretty
+npx -y socialdatax-skills@0.2.66 wechat article --url "<mp_article_url_or_share_text>" --pretty
+npx -y socialdatax-skills@0.2.66 wechat article-stats --url "<mp_article_url_or_share_text>" --pretty
+npx -y socialdatax-skills@0.2.66 wechat transcript --encrypted-object-id "<encrypted_object_id>" --pretty
+npx -y socialdatax-skills@0.2.66 zhihu search --keyword "露营" --pretty
+npx -y socialdatax-skills@0.2.66 instagram search --keyword "camping" --pretty
+npx -y socialdatax-skills@0.2.66 x search --keyword "camping" --pretty
+npx -y socialdatax-skills@0.2.66 x download-media --url "<x_media_url>" --output-dir ./downloads --pretty
+npx -y socialdatax-skills@0.2.66 youtube search --keyword "camping" --pretty
+npx -y socialdatax-skills@0.2.66 tiktok search --keyword "camping" --pretty
+npx -y socialdatax-skills@0.2.66 sensitive-check text --text "<content>" --platform xhs --pretty
 ```
 
 Use `--path` for clients that expect a direct Skills directory. When installing all skills, `--path` is the parent directory; when installing one skill, `--path` is that skill's destination directory.
@@ -540,7 +540,7 @@ Default install locations:
 - Codex workspace scope: `./.codex/skills/<skill-name>`
 - Claude Code: `~/.claude/skills/<skill-name>`
 - Claude Code workspace scope: `./.claude/skills/<skill-name>`
-- WorkBuddy: use `--path` with the Skills directory supported by your current WorkBuddy client, for example `npx -y socialdatax-skills@latest install --path ~/.workbuddy/skills/`
+- WorkBuddy: use `--path` with the Skills directory supported by your current WorkBuddy client, for example `npx -y socialdatax-skills@0.2.66 install --path ~/.workbuddy/skills/`
 
 If no skill name is provided, all skills are installed. If a destination already exists, re-run with `--force` to replace an existing directory for the same skill. Use `--path <directory>` to install one skill to a custom directory, or multiple skills under a custom parent directory. The `shared` scope is only meaningful for `--target hermes`; use `--target agents` for the shared AgentSkills directory directly.
 
@@ -1068,7 +1068,7 @@ if [ -z "${sdx_setup_key//[[:space:]]/}" ]; then
 fi
 export SOCIALDATAX_API_KEY="$sdx_setup_key"
 unset sdx_setup_key
-exec npx -y socialdatax-skills@latest xhs search --keyword "露营" --pretty
+exec npx -y socialdatax-skills@0.2.66 xhs search --keyword "露营" --pretty
 '
 ```
 
@@ -1077,19 +1077,19 @@ are below; run only the command needed for the user's task. These examples do
 not configure credentials themselves.
 
 ```bash
-npx -y socialdatax-skills@latest xhs search --keyword "露营" --pretty
-npx -y socialdatax-skills@latest douyin search --keyword "露营" --pretty
-npx -y socialdatax-skills@latest kuaishou search --keyword "露营" --pretty
-npx -y socialdatax-skills@latest bilibili search-videos --keyword "露营" --pretty
-npx -y socialdatax-skills@latest weibo search --keyword "露营" --pretty
-npx -y socialdatax-skills@latest toutiao search --keyword "露营" --pretty
-npx -y socialdatax-skills@latest wechat search --keyword "露营" --pretty
-npx -y socialdatax-skills@latest zhihu search --keyword "露营" --pretty
-npx -y socialdatax-skills@latest instagram search --keyword "camping" --pretty
-npx -y socialdatax-skills@latest x search --keyword "camping" --pretty
-npx -y socialdatax-skills@latest youtube search --keyword "camping" --pretty
-npx -y socialdatax-skills@latest tiktok search --keyword "camping" --pretty
-npx -y socialdatax-skills@latest sensitive-check text --text "<content>" --platform xhs --pretty
+npx -y socialdatax-skills@0.2.66 xhs search --keyword "露营" --pretty
+npx -y socialdatax-skills@0.2.66 douyin search --keyword "露营" --pretty
+npx -y socialdatax-skills@0.2.66 kuaishou search --keyword "露营" --pretty
+npx -y socialdatax-skills@0.2.66 bilibili search-videos --keyword "露营" --pretty
+npx -y socialdatax-skills@0.2.66 weibo search --keyword "露营" --pretty
+npx -y socialdatax-skills@0.2.66 toutiao search --keyword "露营" --pretty
+npx -y socialdatax-skills@0.2.66 wechat search --keyword "露营" --pretty
+npx -y socialdatax-skills@0.2.66 zhihu search --keyword "露营" --pretty
+npx -y socialdatax-skills@0.2.66 instagram search --keyword "camping" --pretty
+npx -y socialdatax-skills@0.2.66 x search --keyword "camping" --pretty
+npx -y socialdatax-skills@0.2.66 youtube search --keyword "camping" --pretty
+npx -y socialdatax-skills@0.2.66 tiktok search --keyword "camping" --pretty
+npx -y socialdatax-skills@0.2.66 sensitive-check text --text "<content>" --platform xhs --pretty
 ```
 
 MCP client configuration belongs to repo-tracked platform MCP listings when those materials exist. Current repo-tracked standalone listings cover XHS, Douyin, Kuaishou, Bilibili, Weibo, WeChat Content / 微信内容 under the historical `wechat-channels-insights` Registry name, Zhihu, Instagram, X / Twitter, YouTube, and TikTok. WeChat Official Account article details and statistics are included in the WeChat endpoint and skills package, not a separate standalone listing. Toutiao / 今日头条 and Sensitive Words Check remain hosted-only; use their hosted endpoints above or `mcp-remote`.
@@ -1123,13 +1123,13 @@ For maintainers working in the SocialDataX service source repository, check the 
 The canonical command is `download-media`. Bilibili still accepts `download`, and WeChat Channels still accepts `decrypt-media`; their existing flags and legacy JSON `action` values remain compatible. The canonical commands return `action: "download-media"`.
 
 ```bash
-npx -y socialdatax-skills@latest bilibili download-media --url "<bilibili_video_url_or_share_text>" --output-dir ./downloads
-npx -y socialdatax-skills@latest wechat download-media --media-url "<video.video_url>" --output video.mp4
-npx -y socialdatax-skills@latest hongguo search --keyword "<keyword>" --content-types '["comic"]' --pages 2 --pretty
-npx -y socialdatax-skills@latest hongguo series-detail --series-id "<series_id>" --pretty
-npx -y socialdatax-skills@latest hongguo series-detail --url "<series_share_url_or_text>" --pretty
-npx -y socialdatax-skills@latest hongguo download-media --video-id "<episodes[].video_id>" --definition 720p --output-dir ./downloads
-npx -y socialdatax-skills@latest hongguo download-media --url "<episode_share_url_or_text>" --output episode.mp4
+npx -y socialdatax-skills@0.2.66 bilibili download-media --url "<bilibili_video_url_or_share_text>" --output-dir ./downloads
+npx -y socialdatax-skills@0.2.66 wechat download-media --media-url "<video.video_url>" --output video.mp4
+npx -y socialdatax-skills@0.2.66 hongguo search --keyword "<keyword>" --content-types '["comic"]' --pages 2 --pretty
+npx -y socialdatax-skills@0.2.66 hongguo series-detail --series-id "<series_id>" --pretty
+npx -y socialdatax-skills@0.2.66 hongguo series-detail --url "<series_share_url_or_text>" --pretty
+npx -y socialdatax-skills@0.2.66 hongguo download-media --video-id "<episodes[].video_id>" --definition 720p --output-dir ./downloads
+npx -y socialdatax-skills@0.2.66 hongguo download-media --url "<episode_share_url_or_text>" --output episode.mp4
 ```
 
 Hongguo accepts exactly one of `--video-id` or `--url`, and exactly one of `--output` or `--output-dir`. It currently resolves novelquickapp.com comic-drama episode shares. It requires `SOCIALDATAX_API_KEY` to request episode resources and FFmpeg for local CENC MP4 decryption; `--ffmpeg-path` selects the executable. Only the resource request consumes API points. The command checks FFmpeg and the output directory before requesting resources, then downloads, decrypts and fully validates decoding locally. Omit `--definition` to choose the first returned stream; an unavailable explicit label fails without silently choosing another quality.
