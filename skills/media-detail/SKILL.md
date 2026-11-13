@@ -60,165 +60,165 @@ Use `SOCIALDATAX_API_KEY` for SocialDataX requests. The only official website fo
 Prefer the direct CLI when the agent can run shell commands. It does not require MCP server configuration:
 
 ```bash
-npx -y socialdatax-skills@latest xhs detail \
+npx -y socialdatax-skills@0.2.66 xhs detail \
   --note-id "<note_id>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-detail
 
-npx -y socialdatax-skills@latest xhs detail \
+npx -y socialdatax-skills@0.2.66 xhs detail \
   --url "<note_url_or_share_text>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-detail
 
-npx -y socialdatax-skills@latest douyin detail \
+npx -y socialdatax-skills@0.2.66 douyin detail \
   --aweme-id "<aweme_id>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-detail
 
-npx -y socialdatax-skills@latest douyin detail \
+npx -y socialdatax-skills@0.2.66 douyin detail \
   --url "<douyin_content_url_or_share_text>" --pretty \
   --source-client socialdatax-skills --source-platform github \
   --source-skill media-detail
 
-npx -y socialdatax-skills@latest kuaishou detail \
+npx -y socialdatax-skills@0.2.66 kuaishou detail \
   --photo-id "<photo_id>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-detail
 
-npx -y socialdatax-skills@latest kuaishou detail \
+npx -y socialdatax-skills@0.2.66 kuaishou detail \
   --url "<kuaishou_content_url_or_share_text>" --pretty \
   --source-client socialdatax-skills --source-platform github \
   --source-skill media-detail
 
-npx -y socialdatax-skills@latest bilibili detail \
+npx -y socialdatax-skills@0.2.66 bilibili detail \
   --content-id "<content_id>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-detail
 
-npx -y socialdatax-skills@latest bilibili detail \
+npx -y socialdatax-skills@0.2.66 bilibili detail \
   --url "<bilibili_content_url_or_share_text>" --pretty \
   --source-client socialdatax-skills --source-platform github \
   --source-skill media-detail
 
-npx -y socialdatax-skills@latest zhihu detail \
+npx -y socialdatax-skills@0.2.66 zhihu detail \
   --content-url "<zhihu_content_url_or_share_text>" --pretty \
   --source-client socialdatax-skills --source-platform github \
   --source-skill media-detail
 
-npx -y socialdatax-skills@latest instagram detail \
+npx -y socialdatax-skills@0.2.66 instagram detail \
   --post-id "<post_id>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-detail
 
-npx -y socialdatax-skills@latest instagram detail \
+npx -y socialdatax-skills@0.2.66 instagram detail \
   --post-url "<instagram_post_url_or_share_text>" --pretty \
   --source-client socialdatax-skills --source-platform github \
   --source-skill media-detail
 
-npx -y socialdatax-skills@latest x detail \
+npx -y socialdatax-skills@0.2.66 x detail \
   --post-id "<post_id>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-detail
 
-npx -y socialdatax-skills@latest x detail \
+npx -y socialdatax-skills@0.2.66 x detail \
   --post-url "<x_post_url_or_share_text>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-detail
 
-npx -y socialdatax-skills@latest youtube detail \
+npx -y socialdatax-skills@0.2.66 youtube detail \
   --url "<youtube_video_url>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-detail
 
-npx -y socialdatax-skills@latest tiktok detail \
+npx -y socialdatax-skills@0.2.66 tiktok detail \
   --url "<tiktok_post_url_or_share_text>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-detail
 
-npx -y socialdatax-skills@latest weibo detail \
+npx -y socialdatax-skills@0.2.66 weibo detail \
   --post-id "<post_id>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-detail
 
-npx -y socialdatax-skills@latest weibo detail \
+npx -y socialdatax-skills@0.2.66 weibo detail \
   --post-url "<weibo_post_url_or_share_text>" --pretty \
   --source-client socialdatax-skills --source-platform github \
   --source-skill media-detail
 
-npx -y socialdatax-skills@latest toutiao detail \
+npx -y socialdatax-skills@0.2.66 toutiao detail \
   --post-id "<post_id>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-detail
 
-npx -y socialdatax-skills@latest toutiao detail \
+npx -y socialdatax-skills@0.2.66 toutiao detail \
   --url "<toutiao_content_url_or_share_text>" --pretty \
   --source-client socialdatax-skills --source-platform github \
   --source-skill media-detail
 
-npx -y socialdatax-skills@latest wechat detail \
+npx -y socialdatax-skills@0.2.66 wechat detail \
   --encrypted-object-id "<encrypted_object_id>" --pretty \
   --source-client socialdatax-skills --source-platform github \
   --source-skill media-detail
 
-npx -y socialdatax-skills@latest wechat detail \
+npx -y socialdatax-skills@0.2.66 wechat detail \
   --url "<wechat_work_url_or_share_text>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-detail
 
-npx -y socialdatax-skills@latest wechat article \
+npx -y socialdatax-skills@0.2.66 wechat article \
   --url "<mp_article_url_or_share_text>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-detail
 
-npx -y socialdatax-skills@latest wechat article-stats \
+npx -y socialdatax-skills@0.2.66 wechat article-stats \
   --url "<mp_article_url_or_share_text>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-detail
 
-npx -y socialdatax-skills@latest xhs pgy-detail \
+npx -y socialdatax-skills@0.2.66 xhs pgy-detail \
   --note-id "<note_id>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-detail
 
-npx -y socialdatax-skills@latest xhs pgy-detail \
+npx -y socialdatax-skills@0.2.66 xhs pgy-detail \
   --url "<note_url_or_share_text>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-detail
 
-npx -y socialdatax-skills@latest xhs product-detail \
+npx -y socialdatax-skills@0.2.66 xhs product-detail \
   --sku-id "<sku_id>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-detail
 
-npx -y socialdatax-skills@latest xhs product-detail \
+npx -y socialdatax-skills@0.2.66 xhs product-detail \
   --url "<url>" --pretty --source-client socialdatax-skills --source-platform github \
   --source-skill media-detail
 
-npx -y socialdatax-skills@latest douyin product-detail \
+npx -y socialdatax-skills@0.2.66 douyin product-detail \
   --product-id "<product_id>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-detail
 
-npx -y socialdatax-skills@latest douyin product-detail \
+npx -y socialdatax-skills@0.2.66 douyin product-detail \
   --url "<url>" --pretty --source-client socialdatax-skills --source-platform github \
   --source-skill media-detail
 
-npx -y socialdatax-skills@latest wechat share-link \
+npx -y socialdatax-skills@0.2.66 wechat share-link \
   --object-id "<object_id>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-detail
 
-npx -y socialdatax-skills@latest tieba forum-detail \
+npx -y socialdatax-skills@0.2.66 tieba forum-detail \
   --forum-name "<forum_name>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-detail
 
-npx -y socialdatax-skills@latest tieba detail \
+npx -y socialdatax-skills@0.2.66 tieba detail \
   --thread-id "<thread_id>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-detail
 
-npx -y socialdatax-skills@latest tieba detail \
+npx -y socialdatax-skills@0.2.66 tieba detail \
   --url "<url>" --pretty --source-client socialdatax-skills --source-platform github \
   --source-skill media-detail
 
-npx -y socialdatax-skills@latest haokan detail \
+npx -y socialdatax-skills@0.2.66 haokan detail \
   --video-id "<video_id>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-detail
 
-npx -y socialdatax-skills@latest haokan detail \
+npx -y socialdatax-skills@0.2.66 haokan detail \
   --url "<video_url>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-detail
 
-npx -y socialdatax-skills@latest xhs share-info \
+npx -y socialdatax-skills@0.2.66 xhs share-info \
   --share-text "<note_share_short_url_or_full_share_text>" --pretty \
   --source-client socialdatax-skills --source-platform github \
   --source-skill media-detail
 
-npx -y socialdatax-skills@latest hongguo download-media \
+npx -y socialdatax-skills@0.2.66 hongguo download-media \
   --video-id "<video_id>" --output-dir ./downloads --pretty \
   --source-client socialdatax-skills --source-platform github \
   --source-skill media-detail
 
-npx -y socialdatax-skills@latest hongguo download-media \
+npx -y socialdatax-skills@0.2.66 hongguo download-media \
   --url "<episode_share_url_or_text>" --output episode.mp4 --pretty \
   --source-client socialdatax-skills --source-platform github \
   --source-skill media-detail
@@ -260,7 +260,7 @@ XHS 蒲公英 queries apply only to notes from creators enrolled in 蒲公英 / 
 Use this route when the user asks for 蒲公英 / Pugongying commercial details. Ordinary note-detail requests continue to use `xhs detail`; do not automatically upgrade an ordinary request or retry it through the paid commercial route.
 Choose exactly one input: the complete `--note-id`, or `--url` with the original note link, short link or share text. Do not call both routes for the same note.
 If the user asks only for exposure, reads or pricing without establishing the 蒲公英 commercial scope, clarify that scope and the 20-point successful-call cost before calling. Do not ask again when the conversation has already established this scope.
-Use `npx -y socialdatax-skills@latest <platform> <action> --help` for exact flags and values. Paginated commands require the complete returned `next_page_token`. Do not modify, truncate, redact, mask, omit, normalize, rebuild, generate, or replace the middle with ellipses. Commands without `--page-token`, including suggestions and first-page-only searches, do not support pagination.
+Use `npx -y socialdatax-skills@0.2.66 <platform> <action> --help` for exact flags and values. Paginated commands require the complete returned `next_page_token`. Do not modify, truncate, redact, mask, omit, normalize, rebuild, generate, or replace the middle with ellipses. Commands without `--page-token`, including suggestions and first-page-only searches, do not support pagination.
 Haokan / 好看视频: choose either `--video-id` or `--url` (video page URL); do not combine them. Detail is not paginated and does not provide a transcript.
 When the user asks who shared an XHS note, use `xhs share-info --share-text` with the original share short link or complete share text. The sharer and note author are separate roles; do not treat the author as the sharer.
 Share information does not include the sharing time or a forwarding chain. Use `xhs detail` separately only when the full note content is requested.
@@ -334,21 +334,21 @@ Both XHS 蒲公英 tools cost 20 points per successful call; failures are not ch
 Return factual fields such as title or description, content, author, publish time, interaction counts, images, and media summary when available.
 For XHS detail results, in every use of a returned `note_url`, such as final answers, display, references, storage, output, or forwarding, preserve it exactly as the full URL, including `xsec_token` query parameters. Do not modify, truncate, redact, mask, normalize, rebuild, or synthesize the URL from `note_id`; if `note_url` is null, show the `note_id` or say that no directly openable full link is available.
 For XHS `note_id`, copy the entire returned `note_id` exactly; do not pass or display only a prefix.
-When the user wants to save XHS images or videos after detail, pass each returned `image_items[].image_url`, `image_items[].live_photo.video_url`, or `video.video_url` to `npx -y socialdatax-skills@latest xhs download-media --url "<media_url>" --output-dir <directory> --pretty`; this local save command does not require `SOCIALDATAX_API_KEY`.
+When the user wants to save XHS images or videos after detail, pass each returned `image_items[].image_url`, `image_items[].live_photo.video_url`, or `video.video_url` to `npx -y socialdatax-skills@0.2.66 xhs download-media --url "<media_url>" --output-dir <directory> --pretty`; this local save command does not require `SOCIALDATAX_API_KEY`.
 For Douyin detail, include `content_type` when available.
 For Douyin detail, use `images` for image/text posts; `video` is the platform player resource and may be audio for image/text posts; `music` is the bound music or original-sound asset.
-When the user wants to save Douyin media after detail, pass each returned `images[].url`, `images[].live_photo.play_url`, `video.play_url`, `music.play_url`, or `cover_image_url` to `npx -y socialdatax-skills@latest douyin download-media --url "<media_url>" --output-dir <directory> --pretty`; this local save command does not require `SOCIALDATAX_API_KEY`.
-When the user wants to save Kuaishou media after detail, pass each returned `images[].url`, `video.play_url`, or `cover_image_url` to `npx -y socialdatax-skills@latest kuaishou download-media --url "<media_url>" --output-dir <directory> --pretty`; this local save command does not require `SOCIALDATAX_API_KEY`.
+When the user wants to save Douyin media after detail, pass each returned `images[].url`, `images[].live_photo.play_url`, `video.play_url`, `music.play_url`, or `cover_image_url` to `npx -y socialdatax-skills@0.2.66 douyin download-media --url "<media_url>" --output-dir <directory> --pretty`; this local save command does not require `SOCIALDATAX_API_KEY`.
+When the user wants to save Kuaishou media after detail, pass each returned `images[].url`, `video.play_url`, or `cover_image_url` to `npx -y socialdatax-skills@0.2.66 kuaishou download-media --url "<media_url>" --output-dir <directory> --pretty`; this local save command does not require `SOCIALDATAX_API_KEY`.
 For Bilibili detail, preserve returned content IDs and URLs because comments, replies, and article/dynamic reactions may need them.
 For Zhihu, Instagram, X / Twitter, YouTube, and TikTok detail results, keep the returned URL and public content ID values exactly as returned for follow-up comments or creator lookups.
-When the user wants to save X / Twitter media after search or detail, pass each returned `media_items[].cover_image_url` or `media_items[].video_url` to `npx -y socialdatax-skills@latest x download-media --url "<media_url>" --output-dir <directory> --pretty`; this local save command does not require `SOCIALDATAX_API_KEY`. Search results may already include these media URLs; use detail as a fallback when search media fields are absent.
+When the user wants to save X / Twitter media after search or detail, pass each returned `media_items[].cover_image_url` or `media_items[].video_url` to `npx -y socialdatax-skills@0.2.66 x download-media --url "<media_url>" --output-dir <directory> --pretty`; this local save command does not require `SOCIALDATAX_API_KEY`. Search results may already include these media URLs; use detail as a fallback when search media fields are absent.
 If an X / Twitter local media download times out, explain that X media is served from overseas CDN domains such as `pbs.twimg.com` and `video.twimg.com`; ask the user to make the download process use their proxy, for example by adding `--proxy "http://127.0.0.1:7890"` or setting `HTTP_PROXY` / `HTTPS_PROXY` / `ALL_PROXY`, then retry the same `x download-media` command.
 Detail access is read-only and does not provide account actions.
 For Weibo detail, include `post_id`, content, author, media, interaction counts, publish time, and post URL when available.
 For Toutiao detail, include `post_id`, content, author, media, interaction counts, publish time, and post URL when available.
-When the user wants to save Weibo media after detail, pass each returned `image_urls[]` or `video.video_url` to `npx -y socialdatax-skills@latest weibo download-media --url "<media_url>" --output-dir <directory> --pretty`; this local save command does not require `SOCIALDATAX_API_KEY`.
+When the user wants to save Weibo media after detail, pass each returned `image_urls[]` or `video.video_url` to `npx -y socialdatax-skills@0.2.66 weibo download-media --url "<media_url>" --output-dir <directory> --pretty`; this local save command does not require `SOCIALDATAX_API_KEY`.
 For WeChat Channels / 视频号 detail, preserve `object_id` and `object_nonce_id` because comments and replies need both values.
-When the user wants to save a WeChat Channels / 视频号 video after detail, pass the returned `video.video_url` to `npx -y socialdatax-skills@latest wechat download-media --media-url "<video.video_url>" --output <file>`; this local save command decrypts when needed and does not require `SOCIALDATAX_API_KEY`.
+When the user wants to save a WeChat Channels / 视频号 video after detail, pass the returned `video.video_url` to `npx -y socialdatax-skills@0.2.66 wechat download-media --media-url "<video.video_url>" --output <file>`; this local save command decrypts when needed and does not require `SOCIALDATAX_API_KEY`.
 For WeChat Official Account / 微信公众号 article detail, include article title, account, publish time, body text, image URLs, linked articles, and embedded video cards when present.
 For WeChat Official Account / 微信公众号 article statistics, include only returned reading, likes, shares, collections, comments, and wow counts; preserve null values and do not infer missing metrics.
 Label XHS 蒲公英 / Pugongying results as commercial note data, distinct from ordinary public note metrics; do not present ordinary note details as a successful commercial result.
