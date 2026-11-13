@@ -12224,6 +12224,51 @@ test("install dry-run reports existing destination without force", () => {
   }
 });
 
+test("install --force refuses a symbolic-link destination", () => {
+  const tempDir = mkdtempSync(join(tmpdir(), "smi-test-symlink-destination-"));
+  const realDestination = join(tempDir, "real-skill");
+  const destinationLink = join(tempDir, "linked-skill");
+  mkdirSync(realDestination);
+  writeFileSync(
+    join(realDestination, "SKILL.md"),
+    "---\\nname: media-search\\n---\\n\\n# Existing\\n"
+  );
+  symlinkSync(realDestination, destinationLink, "dir");
+
+  try {
+    const result = runCli([
+      "install", "media-search", "--target", "openclaw",
+      "--path", destinationLink, "--dry-run", "--force",
+    ]);
+    assert.equal(result.status, 1);
+    assert.match(result.stderr, /existing path must be a real directory/);
+    assert.equal(existsSync(join(realDestination, "SKILL.md")), true);
+  } finally {
+    rmSync(tempDir, { recursive: true, force: true });
+  }
+});
+
+test("install --force refuses a symbolic-link SKILL.md", () => {
+  const tempDir = mkdtempSync(join(tmpdir(), "smi-test-symlink-marker-"));
+  const destination = join(tempDir, "media-search");
+  const externalMarker = join(tempDir, "external-SKILL.md");
+  mkdirSync(destination);
+  writeFileSync(externalMarker, "---\\nname: media-search\\n---\\n\\n# Existing\\n");
+  symlinkSync(externalMarker, join(destination, "SKILL.md"));
+
+  try {
+    const result = runCli([
+      "install", "media-search", "--target", "openclaw",
+      "--path", destination, "--dry-run", "--force",
+    ]);
+    assert.equal(result.status, 1);
+    assert.match(result.stderr, /SKILL.md must be a regular file/);
+    assert.equal(existsSync(externalMarker), true);
+  } finally {
+    rmSync(tempDir, { recursive: true, force: true });
+  }
+});
+
 test("install dry-run with force previews replacement without writing files", () => {
   const destination = mkdtempSync(join(tmpdir(), "smi-test-replace-"));
   const nestedDir = join(destination, "untouched");
