@@ -136,7 +136,7 @@ test("public package has valid runtime syntax and self-consistent skills", () =>
     assert.ok(existsSync(agentFile), `${slug} should include agents/openai.yaml`);
     const agent = readFileSync(agentFile, "utf8");
     assert.match(agent, new RegExp(`^  default_prompt: .*\\$${slug}\\b`, "m"));
-    assert.match(agent, /^  allow_implicit_invocation: true$/m);
+    assert.match(agent, /^  allow_implicit_invocation: false$/m);
   }
   assert.equal(sourcePlatforms.size, 1, "all packaged skills should use one host attribution");
   const [sourcePlatform] = sourcePlatforms;
