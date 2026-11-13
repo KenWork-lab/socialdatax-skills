@@ -674,7 +674,7 @@ async function runCliWithMockMcp(
 function assertCliError(result, expectedMessage) {
   assert.equal(result.status, 1);
   assert.equal(result.stdout, "");
-  assert.match(result.stderr, new RegExp(`\\] ${expectedMessage}\\n$`));
+  assert.match(result.stderr, new RegExp(`\\] ${expectedMessage}\n$`));
 }
 
 async function assertDirectToolCall(args, expectedToolCall) {
@@ -6756,7 +6756,7 @@ test("xhs openclaw search schema documents semantic sort enums", () => {
     "xhs-insights__xhs_get_note_comments_by_note_url",
   ]) {
     const commentDefinition = pluginSource.match(
-      new RegExp(`name: "${toolName}",[\\s\\S]*?\\n  \\},\\n  \\{`)
+      new RegExp(`name: "${toolName}",[\\s\\S]*?\n  \\},\n  \\{`)
     )?.[0];
     assert.ok(commentDefinition, `${toolName} definition should exist`);
     assert.match(commentDefinition, /optional comment sort_type/);
@@ -12188,7 +12188,7 @@ test("list output documents aggregate skill and Douyin creator series", () => {
   ]) {
     assert.match(
       result.stdout,
-      new RegExp(`media-transcript\\n\\s+[^\\n]*${platform}`)
+      new RegExp(`media-transcript\n\\s+[^\n]*${platform}`)
     );
   }
   assert.match(result.stdout, /media-user-posts/);
@@ -12231,7 +12231,7 @@ test("install --force refuses a symbolic-link destination", () => {
   mkdirSync(realDestination);
   writeFileSync(
     join(realDestination, "SKILL.md"),
-    "---\\nname: media-search\\n---\\n\\n# Existing\\n"
+    "---\nname: media-search\n---\n\n# Existing\n"
   );
   symlinkSync(realDestination, destinationLink, "dir");
 
@@ -12253,7 +12253,7 @@ test("install --force refuses a symbolic-link SKILL.md", () => {
   const destination = join(tempDir, "media-search");
   const externalMarker = join(tempDir, "external-SKILL.md");
   mkdirSync(destination);
-  writeFileSync(externalMarker, "---\\nname: media-search\\n---\\n\\n# Existing\\n");
+  writeFileSync(externalMarker, "---\nname: media-search\n---\n\n# Existing\n");
   symlinkSync(externalMarker, join(destination, "SKILL.md"));
 
   try {
