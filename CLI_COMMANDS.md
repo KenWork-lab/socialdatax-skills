@@ -2,7 +2,7 @@
 
 This reference covers the additional direct CLI commands for discovery, products, creator analytics, WeChat Official Accounts, Baidu Tieba, Haokan, account points, API documentation, and six more transcript platforms. See [README](./README.md) for installation and the existing content, comment, creator, download, and transcript commands.
 
-Set `SOCIALDATAX_API_KEY` in the environment for hosted requests. Obtain or manage your key at <https://socialdatax.com>. Run commands with `npx -y socialdatax-skills@latest`; use `<platform> <action> --help` to inspect the installed version. Angle-bracket values are placeholders: replace them with the user’s keyword, returned ID, URL or token.
+Set `SOCIALDATAX_API_KEY` in the environment for hosted requests. Obtain or manage your key at <https://socialdatax.com>. Run commands with `npx -y socialdatax-skills@0.2.66`; use `<platform> <action> --help` to inspect the installed version. Angle-bracket values are placeholders: replace them with the user’s keyword, returned ID, URL or token.
 
 ## Shared options and input rules
 
@@ -16,8 +16,8 @@ Set `SOCIALDATAX_API_KEY` in the environment for hosted requests. Obtain or mana
 - All eleven supported platform `transcript` commands accept `--srt-output <file>` to save returned timed segments as UTF-8 SRT after success. Standard output remains the original JSON; the saved path is reported on stderr. The parent directory must exist and be writable, and existing files are never overwritten. Failed or unfinished jobs produce no subtitle file; unfinished jobs can continue with the same `--job-id` and `--srt-output`. Missing or invalid timing causes an export error while preserving the job JSON; do not resubmit the video to retry a local export failure.
 
 ```bash
-npx -y socialdatax-skills@latest douyin transcript --url "<video_url_or_share_text>" --srt-output ./video.srt --pretty
-npx -y socialdatax-skills@latest douyin transcript --job-id "<existing_job_id>" --srt-output ./video.srt --pretty
+npx -y socialdatax-skills@0.2.66 douyin transcript --url "<video_url_or_share_text>" --srt-output ./video.srt --pretty
+npx -y socialdatax-skills@0.2.66 douyin transcript --job-id "<existing_job_id>" --srt-output ./video.srt --pretty
 ```
 
 ## Share links, Official Account image posts, and Hongguo
@@ -27,22 +27,22 @@ Comments accept exactly one of `--series-id` or `--url` (a series share URL or f
 Hongguo whole-series reviews and replies use public page-token pagination, one page per API/MCP call. Single-episode video comments are not supported:
 
 ```bash
-npx -y socialdatax-skills@latest hongguo comments --series-id "<series_id>" --pretty
-npx -y socialdatax-skills@latest hongguo comments --url "<series_share_url_or_text>" --pretty
-npx -y socialdatax-skills@latest hongguo replies --series-id "<series_id>" --comment-id "<comment_id>" --level 2 --pretty
+npx -y socialdatax-skills@0.2.66 hongguo comments --series-id "<series_id>" --pretty
+npx -y socialdatax-skills@0.2.66 hongguo comments --url "<series_share_url_or_text>" --pretty
+npx -y socialdatax-skills@0.2.66 hongguo replies --series-id "<series_id>" --comment-id "<comment_id>" --level 2 --pretty
 ```
 
 Business fields are in `data.items`: reviews provide `series_id`, `comment_id`, `content`, `author`, `create_time`, `like_count`, `reply_count` and `rating`; replies also identify the root review and reply target. Each item includes `series_id` and its own `comment_id`; reply items also include `parent_comment_id` for the list parent. Pass the complete `data.next_page_token` unchanged as `--page-token`, preserving the series/reply context. An empty token ends pagination; `data.comment_count` or `data.reply_count` can be null and must not determine completion; `data.items[].reply_count` is the reply count of that item. `--level 3` takes a parent reply ID for nested replies. CLI `--pages` and `--all` reuse the existing collector; `--include-replies` is not supported.
 
 ```bash
-npx -y socialdatax-skills@latest xhs share-link --note-id "<note_id>" --pretty
-npx -y socialdatax-skills@latest xhs share-link --url "<complete_note_url_or_share_text>" --pretty
-npx -y socialdatax-skills@latest wechat detail --object-id "<object_id>" --pretty
-npx -y socialdatax-skills@latest wechat image-post-search --keyword "<keyword>" --sort-type hot --pages 2 --pretty
-npx -y socialdatax-skills@latest wechat mp-account-image-posts --account-id "<account_id>" --pages 2 --pretty
-npx -y socialdatax-skills@latest hongguo search --keyword "<keyword>" --content-types '["comic","image_text"]' --pages 2 --pretty
-npx -y socialdatax-skills@latest hongguo series-detail --series-id "<series_id>" --pretty
-npx -y socialdatax-skills@latest hongguo series-detail --url "<series_share_url_or_text>" --pretty
+npx -y socialdatax-skills@0.2.66 xhs share-link --note-id "<note_id>" --pretty
+npx -y socialdatax-skills@0.2.66 xhs share-link --url "<complete_note_url_or_share_text>" --pretty
+npx -y socialdatax-skills@0.2.66 wechat detail --object-id "<object_id>" --pretty
+npx -y socialdatax-skills@0.2.66 wechat image-post-search --keyword "<keyword>" --sort-type hot --pages 2 --pretty
+npx -y socialdatax-skills@0.2.66 wechat mp-account-image-posts --account-id "<account_id>" --pages 2 --pretty
+npx -y socialdatax-skills@0.2.66 hongguo search --keyword "<keyword>" --content-types '["comic","image_text"]' --pages 2 --pretty
+npx -y socialdatax-skills@0.2.66 hongguo series-detail --series-id "<series_id>" --pretty
+npx -y socialdatax-skills@0.2.66 hongguo series-detail --url "<series_share_url_or_text>" --pretty
 ```
 
 - `xhs share-link` accepts exactly one of `--note-id` or `--url`. Preserve complete returned links, including query parameters.
@@ -89,7 +89,7 @@ Bilibili transcripts process one part: a URL with `?p=N` selects that part, whil
 #### `xhs user-search`
 
 ```sh
-npx -y socialdatax-skills@latest xhs user-search --keyword "<keyword>" --pretty
+npx -y socialdatax-skills@0.2.66 xhs user-search --keyword "<keyword>" --pretty
 ```
 
 | Flag | Required | Type / accepted values | Default / constraints |
@@ -100,7 +100,7 @@ npx -y socialdatax-skills@latest xhs user-search --keyword "<keyword>" --pretty
 #### `xhs search-suggestions`
 
 ```sh
-npx -y socialdatax-skills@latest xhs search-suggestions --keyword "<keyword>" --pretty
+npx -y socialdatax-skills@0.2.66 xhs search-suggestions --keyword "<keyword>" --pretty
 ```
 
 | Flag | Required | Type / accepted values | Default / constraints |
@@ -110,7 +110,7 @@ npx -y socialdatax-skills@latest xhs search-suggestions --keyword "<keyword>" --
 #### `xhs search-images`
 
 ```sh
-npx -y socialdatax-skills@latest xhs search-images --keyword "<keyword>" --pretty
+npx -y socialdatax-skills@0.2.66 xhs search-images --keyword "<keyword>" --pretty
 ```
 
 | Flag | Required | Type / accepted values | Default / constraints |
@@ -121,7 +121,7 @@ npx -y socialdatax-skills@latest xhs search-images --keyword "<keyword>" --prett
 #### `xhs product-search`
 
 ```sh
-npx -y socialdatax-skills@latest xhs product-search --keyword "<keyword>" --pretty
+npx -y socialdatax-skills@0.2.66 xhs product-search --keyword "<keyword>" --pretty
 ```
 
 | Flag | Required | Type / accepted values | Default / constraints |
@@ -134,7 +134,7 @@ npx -y socialdatax-skills@latest xhs product-search --keyword "<keyword>" --pret
 Input variant: `--sku-id`.
 
 ```sh
-npx -y socialdatax-skills@latest xhs product-detail --sku-id "<sku_id>" --pretty
+npx -y socialdatax-skills@0.2.66 xhs product-detail --sku-id "<sku_id>" --pretty
 ```
 
 | Flag | Required | Type / accepted values | Default / constraints |
@@ -144,7 +144,7 @@ npx -y socialdatax-skills@latest xhs product-detail --sku-id "<sku_id>" --pretty
 Input variant: `--url`.
 
 ```sh
-npx -y socialdatax-skills@latest xhs product-detail --url "<url>" --pretty
+npx -y socialdatax-skills@0.2.66 xhs product-detail --url "<url>" --pretty
 ```
 
 | Flag | Required | Type / accepted values | Default / constraints |
@@ -154,7 +154,7 @@ npx -y socialdatax-skills@latest xhs product-detail --url "<url>" --pretty
 #### `xhs product-reviews`
 
 ```sh
-npx -y socialdatax-skills@latest xhs product-reviews --sku-id "<sku_id>" --pretty
+npx -y socialdatax-skills@0.2.66 xhs product-reviews --sku-id "<sku_id>" --pretty
 ```
 
 | Flag | Required | Type / accepted values | Default / constraints |
@@ -167,7 +167,7 @@ npx -y socialdatax-skills@latest xhs product-reviews --sku-id "<sku_id>" --prett
 #### `xhs product-review-replies`
 
 ```sh
-npx -y socialdatax-skills@latest xhs product-review-replies --review-id "<review_id>" --pretty
+npx -y socialdatax-skills@0.2.66 xhs product-review-replies --review-id "<review_id>" --pretty
 ```
 
 | Flag | Required | Type / accepted values | Default / constraints |
@@ -178,7 +178,7 @@ npx -y socialdatax-skills@latest xhs product-review-replies --review-id "<review
 #### `xhs product-review-reply-replies`
 
 ```sh
-npx -y socialdatax-skills@latest xhs product-review-reply-replies --review-id "<review_id>" --pretty
+npx -y socialdatax-skills@0.2.66 xhs product-review-reply-replies --review-id "<review_id>" --pretty
 ```
 
 | Flag | Required | Type / accepted values | Default / constraints |
@@ -189,7 +189,7 @@ npx -y socialdatax-skills@latest xhs product-review-reply-replies --review-id "<
 #### `xhs pgy-creator-profile`
 
 ```sh
-npx -y socialdatax-skills@latest xhs pgy-creator-profile --user-id "<user_id>" --pretty
+npx -y socialdatax-skills@0.2.66 xhs pgy-creator-profile --user-id "<user_id>" --pretty
 ```
 
 | Flag | Required | Type / accepted values | Default / constraints |
@@ -199,7 +199,7 @@ npx -y socialdatax-skills@latest xhs pgy-creator-profile --user-id "<user_id>" -
 #### `xhs pgy-creator-notes-performance`
 
 ```sh
-npx -y socialdatax-skills@latest xhs pgy-creator-notes-performance --user-id "<user_id>" --pretty
+npx -y socialdatax-skills@0.2.66 xhs pgy-creator-notes-performance --user-id "<user_id>" --pretty
 ```
 
 | Flag | Required | Type / accepted values | Default / constraints |
@@ -210,7 +210,7 @@ npx -y socialdatax-skills@latest xhs pgy-creator-notes-performance --user-id "<u
 #### `xhs pgy-creator-fans-profile`
 
 ```sh
-npx -y socialdatax-skills@latest xhs pgy-creator-fans-profile --user-id "<user_id>" --pretty
+npx -y socialdatax-skills@0.2.66 xhs pgy-creator-fans-profile --user-id "<user_id>" --pretty
 ```
 
 | Flag | Required | Type / accepted values | Default / constraints |
@@ -220,7 +220,7 @@ npx -y socialdatax-skills@latest xhs pgy-creator-fans-profile --user-id "<user_i
 #### `xhs pgy-creator-fans-summary`
 
 ```sh
-npx -y socialdatax-skills@latest xhs pgy-creator-fans-summary --user-id "<user_id>" --pretty
+npx -y socialdatax-skills@0.2.66 xhs pgy-creator-fans-summary --user-id "<user_id>" --pretty
 ```
 
 | Flag | Required | Type / accepted values | Default / constraints |
@@ -230,7 +230,7 @@ npx -y socialdatax-skills@latest xhs pgy-creator-fans-summary --user-id "<user_i
 #### `xhs pgy-creator-metrics-trend`
 
 ```sh
-npx -y socialdatax-skills@latest xhs pgy-creator-metrics-trend --user-id "<user_id>" --pretty
+npx -y socialdatax-skills@0.2.66 xhs pgy-creator-metrics-trend --user-id "<user_id>" --pretty
 ```
 
 | Flag | Required | Type / accepted values | Default / constraints |
@@ -241,7 +241,7 @@ npx -y socialdatax-skills@latest xhs pgy-creator-metrics-trend --user-id "<user_
 #### `xhs pgy-creator-commercial-overview`
 
 ```sh
-npx -y socialdatax-skills@latest xhs pgy-creator-commercial-overview --user-id "<user_id>" --pretty
+npx -y socialdatax-skills@0.2.66 xhs pgy-creator-commercial-overview --user-id "<user_id>" --pretty
 ```
 
 | Flag | Required | Type / accepted values | Default / constraints |
@@ -254,7 +254,7 @@ npx -y socialdatax-skills@latest xhs pgy-creator-commercial-overview --user-id "
 Input variant: `--page-id`.
 
 ```sh
-npx -y socialdatax-skills@latest xhs topic-notes --page-id "<page_id>" --pretty
+npx -y socialdatax-skills@0.2.66 xhs topic-notes --page-id "<page_id>" --pretty
 ```
 
 | Flag | Required | Type / accepted values | Default / constraints |
@@ -266,7 +266,7 @@ npx -y socialdatax-skills@latest xhs topic-notes --page-id "<page_id>" --pretty
 Input variant: `--url`.
 
 ```sh
-npx -y socialdatax-skills@latest xhs topic-notes --url "<topic_url>" --pretty
+npx -y socialdatax-skills@0.2.66 xhs topic-notes --url "<topic_url>" --pretty
 ```
 
 | Flag | Required | Type / accepted values | Default / constraints |
@@ -280,7 +280,7 @@ npx -y socialdatax-skills@latest xhs topic-notes --url "<topic_url>" --pretty
 Use this only to convert an encrypted user ID on its own. For user information or posts, pass the existing user ID or profile URL directly to `xhs user-info` or `xhs user-posts`; no separate conversion is needed.
 
 ```sh
-npx -y socialdatax-skills@latest xhs resolve-user-id --encrypted-user-id "<encrypted_user_id>" --pretty
+npx -y socialdatax-skills@0.2.66 xhs resolve-user-id --encrypted-user-id "<encrypted_user_id>" --pretty
 ```
 
 | Flag | Required | Type / accepted values | Default / constraints |
@@ -292,7 +292,7 @@ npx -y socialdatax-skills@latest xhs resolve-user-id --encrypted-user-id "<encry
 Read the sharer, note summary and author from a Xiaohongshu / XHS note share short link or complete share text. Use `xhs detail` for the full note content. Share information does not include the sharing time.
 
 ```sh
-npx -y socialdatax-skills@latest xhs share-info --share-text "<note_share_short_url_or_full_share_text>" --pretty
+npx -y socialdatax-skills@0.2.66 xhs share-info --share-text "<note_share_short_url_or_full_share_text>" --pretty
 ```
 
 | Flag | Required | Type / accepted values | Default / constraints |
@@ -304,7 +304,7 @@ npx -y socialdatax-skills@latest xhs share-info --share-text "<note_share_short_
 #### `douyin user-search`
 
 ```sh
-npx -y socialdatax-skills@latest douyin user-search --keyword "<keyword>" --pretty
+npx -y socialdatax-skills@0.2.66 douyin user-search --keyword "<keyword>" --pretty
 ```
 
 | Flag | Required | Type / accepted values | Default / constraints |
@@ -317,7 +317,7 @@ npx -y socialdatax-skills@latest douyin user-search --keyword "<keyword>" --pret
 #### `douyin search-suggestions`
 
 ```sh
-npx -y socialdatax-skills@latest douyin search-suggestions --keyword "<keyword>" --pretty
+npx -y socialdatax-skills@0.2.66 douyin search-suggestions --keyword "<keyword>" --pretty
 ```
 
 | Flag | Required | Type / accepted values | Default / constraints |
@@ -327,7 +327,7 @@ npx -y socialdatax-skills@latest douyin search-suggestions --keyword "<keyword>"
 #### `douyin product-search`
 
 ```sh
-npx -y socialdatax-skills@latest douyin product-search --keyword "<keyword>" --pretty
+npx -y socialdatax-skills@0.2.66 douyin product-search --keyword "<keyword>" --pretty
 ```
 
 | Flag | Required | Type / accepted values | Default / constraints |
@@ -349,7 +349,7 @@ npx -y socialdatax-skills@latest douyin product-search --keyword "<keyword>" --p
 Input variant: `--product-id`.
 
 ```sh
-npx -y socialdatax-skills@latest douyin product-detail --product-id "<product_id>" --pretty
+npx -y socialdatax-skills@0.2.66 douyin product-detail --product-id "<product_id>" --pretty
 ```
 
 | Flag | Required | Type / accepted values | Default / constraints |
@@ -359,7 +359,7 @@ npx -y socialdatax-skills@latest douyin product-detail --product-id "<product_id
 Input variant: `--url`.
 
 ```sh
-npx -y socialdatax-skills@latest douyin product-detail --url "<url>" --pretty
+npx -y socialdatax-skills@0.2.66 douyin product-detail --url "<url>" --pretty
 ```
 
 | Flag | Required | Type / accepted values | Default / constraints |
@@ -371,7 +371,7 @@ npx -y socialdatax-skills@latest douyin product-detail --url "<url>" --pretty
 This entry is selected when `--douyin-id` is supplied.
 
 ```sh
-npx -y socialdatax-skills@latest douyin user-info --douyin-id "<douyin_id>" --pretty
+npx -y socialdatax-skills@0.2.66 douyin user-info --douyin-id "<douyin_id>" --pretty
 ```
 
 | Flag | Required | Type / accepted values | Default / constraints |
@@ -383,7 +383,7 @@ npx -y socialdatax-skills@latest douyin user-info --douyin-id "<douyin_id>" --pr
 #### `tiktok user-search`
 
 ```sh
-npx -y socialdatax-skills@latest tiktok user-search --keyword "<keyword>" --pretty
+npx -y socialdatax-skills@0.2.66 tiktok user-search --keyword "<keyword>" --pretty
 ```
 
 | Flag | Required | Type / accepted values | Default / constraints |
@@ -394,7 +394,7 @@ npx -y socialdatax-skills@latest tiktok user-search --keyword "<keyword>" --pret
 #### `tiktok search-suggestions`
 
 ```sh
-npx -y socialdatax-skills@latest tiktok search-suggestions --keyword "<keyword>" --pretty
+npx -y socialdatax-skills@0.2.66 tiktok search-suggestions --keyword "<keyword>" --pretty
 ```
 
 | Flag | Required | Type / accepted values | Default / constraints |
@@ -406,7 +406,7 @@ npx -y socialdatax-skills@latest tiktok search-suggestions --keyword "<keyword>"
 Input variant: `--url`.
 
 ```sh
-npx -y socialdatax-skills@latest tiktok transcript --url "<video_url>" --pretty
+npx -y socialdatax-skills@0.2.66 tiktok transcript --url "<video_url>" --pretty
 ```
 
 | Flag | Required | Type / accepted values | Default / constraints |
@@ -416,7 +416,7 @@ npx -y socialdatax-skills@latest tiktok transcript --url "<video_url>" --pretty
 Input variant: `--aweme-id`.
 
 ```sh
-npx -y socialdatax-skills@latest tiktok transcript --aweme-id "<aweme_id>" --pretty
+npx -y socialdatax-skills@0.2.66 tiktok transcript --aweme-id "<aweme_id>" --pretty
 ```
 
 | Flag | Required | Type / accepted values | Default / constraints |
@@ -426,7 +426,7 @@ npx -y socialdatax-skills@latest tiktok transcript --aweme-id "<aweme_id>" --pre
 Input variant: `--job-id`.
 
 ```sh
-npx -y socialdatax-skills@latest tiktok transcript --job-id "<job_id>" --pretty
+npx -y socialdatax-skills@0.2.66 tiktok transcript --job-id "<job_id>" --pretty
 ```
 
 | Flag | Required | Type / accepted values | Default / constraints |
@@ -438,7 +438,7 @@ npx -y socialdatax-skills@latest tiktok transcript --job-id "<job_id>" --pretty
 #### `weibo user-search`
 
 ```sh
-npx -y socialdatax-skills@latest weibo user-search --keyword "<keyword>" --pretty
+npx -y socialdatax-skills@0.2.66 weibo user-search --keyword "<keyword>" --pretty
 ```
 
 | Flag | Required | Type / accepted values | Default / constraints |
@@ -449,7 +449,7 @@ npx -y socialdatax-skills@latest weibo user-search --keyword "<keyword>" --prett
 #### `weibo search-suggestions`
 
 ```sh
-npx -y socialdatax-skills@latest weibo search-suggestions --keyword "<keyword>" --pretty
+npx -y socialdatax-skills@0.2.66 weibo search-suggestions --keyword "<keyword>" --pretty
 ```
 
 | Flag | Required | Type / accepted values | Default / constraints |
@@ -461,7 +461,7 @@ npx -y socialdatax-skills@latest weibo search-suggestions --keyword "<keyword>" 
 Get a few search-box user suggestions with profile details and live status. No pagination; use `weibo user-search` for paginated account search. Available in CLI `0.2.50` with the deployed Weibo `0.1.5` service:
 
 ```sh
-npx -y socialdatax-skills@latest weibo user-suggestions --keyword "<keyword>" --pretty
+npx -y socialdatax-skills@0.2.66 weibo user-suggestions --keyword "<keyword>" --pretty
 ```
 
 | Flag | Required | Type / accepted values | Default / constraints |
@@ -473,7 +473,7 @@ npx -y socialdatax-skills@latest weibo user-suggestions --keyword "<keyword>" --
 This entry is selected when `--url` is supplied.
 
 ```sh
-npx -y socialdatax-skills@latest weibo likers --url "<post_url>" --pretty
+npx -y socialdatax-skills@0.2.66 weibo likers --url "<post_url>" --pretty
 ```
 
 | Flag | Required | Type / accepted values | Default / constraints |
@@ -486,7 +486,7 @@ npx -y socialdatax-skills@latest weibo likers --url "<post_url>" --pretty
 This entry is selected when `--url` is supplied.
 
 ```sh
-npx -y socialdatax-skills@latest weibo reposts --url "<post_url>" --pretty
+npx -y socialdatax-skills@0.2.66 weibo reposts --url "<post_url>" --pretty
 ```
 
 | Flag | Required | Type / accepted values | Default / constraints |
@@ -499,7 +499,7 @@ npx -y socialdatax-skills@latest weibo reposts --url "<post_url>" --pretty
 #### `zhihu user-search`
 
 ```sh
-npx -y socialdatax-skills@latest zhihu user-search --keyword "<keyword>" --pretty
+npx -y socialdatax-skills@0.2.66 zhihu user-search --keyword "<keyword>" --pretty
 ```
 
 | Flag | Required | Type / accepted values | Default / constraints |
@@ -510,7 +510,7 @@ npx -y socialdatax-skills@latest zhihu user-search --keyword "<keyword>" --prett
 #### `zhihu search-suggestions`
 
 ```sh
-npx -y socialdatax-skills@latest zhihu search-suggestions --keyword "<keyword>" --pretty
+npx -y socialdatax-skills@0.2.66 zhihu search-suggestions --keyword "<keyword>" --pretty
 ```
 
 | Flag | Required | Type / accepted values | Default / constraints |
@@ -522,7 +522,7 @@ npx -y socialdatax-skills@latest zhihu search-suggestions --keyword "<keyword>" 
 Input variant: `--url`.
 
 ```sh
-npx -y socialdatax-skills@latest zhihu transcript --url "<video_url>" --pretty
+npx -y socialdatax-skills@0.2.66 zhihu transcript --url "<video_url>" --pretty
 ```
 
 | Flag | Required | Type / accepted values | Default / constraints |
@@ -532,7 +532,7 @@ npx -y socialdatax-skills@latest zhihu transcript --url "<video_url>" --pretty
 Input variant: `--zvideo-id`.
 
 ```sh
-npx -y socialdatax-skills@latest zhihu transcript --zvideo-id "<zvideo_id>" --pretty
+npx -y socialdatax-skills@0.2.66 zhihu transcript --zvideo-id "<zvideo_id>" --pretty
 ```
 
 | Flag | Required | Type / accepted values | Default / constraints |
@@ -542,7 +542,7 @@ npx -y socialdatax-skills@latest zhihu transcript --zvideo-id "<zvideo_id>" --pr
 Input variant: `--job-id`.
 
 ```sh
-npx -y socialdatax-skills@latest zhihu transcript --job-id "<job_id>" --pretty
+npx -y socialdatax-skills@0.2.66 zhihu transcript --job-id "<job_id>" --pretty
 ```
 
 | Flag | Required | Type / accepted values | Default / constraints |
@@ -554,7 +554,7 @@ npx -y socialdatax-skills@latest zhihu transcript --job-id "<job_id>" --pretty
 #### `instagram user-search`
 
 ```sh
-npx -y socialdatax-skills@latest instagram user-search --keyword "<keyword>" --pretty
+npx -y socialdatax-skills@0.2.66 instagram user-search --keyword "<keyword>" --pretty
 ```
 
 | Flag | Required | Type / accepted values | Default / constraints |
@@ -565,7 +565,7 @@ npx -y socialdatax-skills@latest instagram user-search --keyword "<keyword>" --p
 #### `instagram tag-search`
 
 ```sh
-npx -y socialdatax-skills@latest instagram tag-search --keyword "<keyword>" --pretty
+npx -y socialdatax-skills@0.2.66 instagram tag-search --keyword "<keyword>" --pretty
 ```
 
 | Flag | Required | Type / accepted values | Default / constraints |
@@ -577,7 +577,7 @@ npx -y socialdatax-skills@latest instagram tag-search --keyword "<keyword>" --pr
 Input variant: `--url`.
 
 ```sh
-npx -y socialdatax-skills@latest instagram transcript --url "<post_url>" --pretty
+npx -y socialdatax-skills@0.2.66 instagram transcript --url "<post_url>" --pretty
 ```
 
 | Flag | Required | Type / accepted values | Default / constraints |
@@ -587,7 +587,7 @@ npx -y socialdatax-skills@latest instagram transcript --url "<post_url>" --prett
 Input variant: `--post-id`.
 
 ```sh
-npx -y socialdatax-skills@latest instagram transcript --post-id "<post_id>" --pretty
+npx -y socialdatax-skills@0.2.66 instagram transcript --post-id "<post_id>" --pretty
 ```
 
 | Flag | Required | Type / accepted values | Default / constraints |
@@ -597,7 +597,7 @@ npx -y socialdatax-skills@latest instagram transcript --post-id "<post_id>" --pr
 Input variant: `--job-id`.
 
 ```sh
-npx -y socialdatax-skills@latest instagram transcript --job-id "<job_id>" --pretty
+npx -y socialdatax-skills@0.2.66 instagram transcript --job-id "<job_id>" --pretty
 ```
 
 | Flag | Required | Type / accepted values | Default / constraints |
@@ -613,9 +613,9 @@ Read replies authored by a creator, including self-replies. To read comments und
 Choose exactly one identity:
 
 ```sh
-npx -y socialdatax-skills@latest x user-replies --user-id "<user_id>" --pretty
-npx -y socialdatax-skills@latest x user-replies --username "<username>" --pretty
-npx -y socialdatax-skills@latest x user-replies --profile-url "<profile_url>" --pretty
+npx -y socialdatax-skills@0.2.66 x user-replies --user-id "<user_id>" --pretty
+npx -y socialdatax-skills@0.2.66 x user-replies --username "<username>" --pretty
+npx -y socialdatax-skills@0.2.66 x user-replies --profile-url "<profile_url>" --pretty
 ```
 
 | Flag | Required | Type / accepted values | Default / constraints |
@@ -630,7 +630,7 @@ Supports `--pages`, `--all`, and `--max-items`. Keep the user and identity optio
 #### `x user-search`
 
 ```sh
-npx -y socialdatax-skills@latest x user-search --keyword "<keyword>" --pretty
+npx -y socialdatax-skills@0.2.66 x user-search --keyword "<keyword>" --pretty
 ```
 
 | Flag | Required | Type / accepted values | Default / constraints |
@@ -641,7 +641,7 @@ npx -y socialdatax-skills@latest x user-search --keyword "<keyword>" --pretty
 #### `x search-suggestions`
 
 ```sh
-npx -y socialdatax-skills@latest x search-suggestions --keyword "<keyword>" --pretty
+npx -y socialdatax-skills@0.2.66 x search-suggestions --keyword "<keyword>" --pretty
 ```
 
 | Flag | Required | Type / accepted values | Default / constraints |
@@ -653,7 +653,7 @@ npx -y socialdatax-skills@latest x search-suggestions --keyword "<keyword>" --pr
 Input variant: `--url`.
 
 ```sh
-npx -y socialdatax-skills@latest x transcript --url "<post_url>" --pretty
+npx -y socialdatax-skills@0.2.66 x transcript --url "<post_url>" --pretty
 ```
 
 | Flag | Required | Type / accepted values | Default / constraints |
@@ -663,7 +663,7 @@ npx -y socialdatax-skills@latest x transcript --url "<post_url>" --pretty
 Input variant: `--post-id`.
 
 ```sh
-npx -y socialdatax-skills@latest x transcript --post-id "<post_id>" --pretty
+npx -y socialdatax-skills@0.2.66 x transcript --post-id "<post_id>" --pretty
 ```
 
 | Flag | Required | Type / accepted values | Default / constraints |
@@ -673,7 +673,7 @@ npx -y socialdatax-skills@latest x transcript --post-id "<post_id>" --pretty
 Input variant: `--job-id`.
 
 ```sh
-npx -y socialdatax-skills@latest x transcript --job-id "<job_id>" --pretty
+npx -y socialdatax-skills@0.2.66 x transcript --job-id "<job_id>" --pretty
 ```
 
 | Flag | Required | Type / accepted values | Default / constraints |
@@ -685,7 +685,7 @@ npx -y socialdatax-skills@latest x transcript --job-id "<job_id>" --pretty
 #### `bilibili user-search`
 
 ```sh
-npx -y socialdatax-skills@latest bilibili user-search --keyword "<keyword>" --pretty
+npx -y socialdatax-skills@0.2.66 bilibili user-search --keyword "<keyword>" --pretty
 ```
 
 | Flag | Required | Type / accepted values | Default / constraints |
@@ -696,7 +696,7 @@ npx -y socialdatax-skills@latest bilibili user-search --keyword "<keyword>" --pr
 #### `bilibili search-suggestions`
 
 ```sh
-npx -y socialdatax-skills@latest bilibili search-suggestions --keyword "<keyword>" --pretty
+npx -y socialdatax-skills@0.2.66 bilibili search-suggestions --keyword "<keyword>" --pretty
 ```
 
 | Flag | Required | Type / accepted values | Default / constraints |
@@ -708,7 +708,7 @@ npx -y socialdatax-skills@latest bilibili search-suggestions --keyword "<keyword
 Input variant: `--url`.
 
 ```sh
-npx -y socialdatax-skills@latest bilibili transcript --url "<video_url>" --pretty
+npx -y socialdatax-skills@0.2.66 bilibili transcript --url "<video_url>" --pretty
 ```
 
 | Flag | Required | Type / accepted values | Default / constraints |
@@ -718,7 +718,7 @@ npx -y socialdatax-skills@latest bilibili transcript --url "<video_url>" --prett
 Input variant: `--bvid`.
 
 ```sh
-npx -y socialdatax-skills@latest bilibili transcript --bvid "<bvid>" --pretty
+npx -y socialdatax-skills@0.2.66 bilibili transcript --bvid "<bvid>" --pretty
 ```
 
 | Flag | Required | Type / accepted values | Default / constraints |
@@ -728,7 +728,7 @@ npx -y socialdatax-skills@latest bilibili transcript --bvid "<bvid>" --pretty
 Input variant: `--job-id`.
 
 ```sh
-npx -y socialdatax-skills@latest bilibili transcript --job-id "<job_id>" --pretty
+npx -y socialdatax-skills@0.2.66 bilibili transcript --job-id "<job_id>" --pretty
 ```
 
 | Flag | Required | Type / accepted values | Default / constraints |
@@ -740,7 +740,7 @@ npx -y socialdatax-skills@latest bilibili transcript --job-id "<job_id>" --prett
 #### `toutiao user-search`
 
 ```sh
-npx -y socialdatax-skills@latest toutiao user-search --keyword "<keyword>" --pretty
+npx -y socialdatax-skills@0.2.66 toutiao user-search --keyword "<keyword>" --pretty
 ```
 
 | Flag | Required | Type / accepted values | Default / constraints |
@@ -751,7 +751,7 @@ npx -y socialdatax-skills@latest toutiao user-search --keyword "<keyword>" --pre
 #### `toutiao search-suggestions`
 
 ```sh
-npx -y socialdatax-skills@latest toutiao search-suggestions --keyword "<keyword>" --pretty
+npx -y socialdatax-skills@0.2.66 toutiao search-suggestions --keyword "<keyword>" --pretty
 ```
 
 | Flag | Required | Type / accepted values | Default / constraints |
@@ -763,7 +763,7 @@ npx -y socialdatax-skills@latest toutiao search-suggestions --keyword "<keyword>
 #### `kuaishou search-suggestions`
 
 ```sh
-npx -y socialdatax-skills@latest kuaishou search-suggestions --keyword "<keyword>" --pretty
+npx -y socialdatax-skills@0.2.66 kuaishou search-suggestions --keyword "<keyword>" --pretty
 ```
 
 | Flag | Required | Type / accepted values | Default / constraints |
@@ -775,7 +775,7 @@ npx -y socialdatax-skills@latest kuaishou search-suggestions --keyword "<keyword
 #### `youtube search-suggestions`
 
 ```sh
-npx -y socialdatax-skills@latest youtube search-suggestions --keyword "<keyword>" --pretty
+npx -y socialdatax-skills@0.2.66 youtube search-suggestions --keyword "<keyword>" --pretty
 ```
 
 | Flag | Required | Type / accepted values | Default / constraints |
@@ -785,7 +785,7 @@ npx -y socialdatax-skills@latest youtube search-suggestions --keyword "<keyword>
 #### `youtube channel-search`
 
 ```sh
-npx -y socialdatax-skills@latest youtube channel-search --keyword "<keyword>" --pretty
+npx -y socialdatax-skills@0.2.66 youtube channel-search --keyword "<keyword>" --pretty
 ```
 
 | Flag | Required | Type / accepted values | Default / constraints |
@@ -798,7 +798,7 @@ npx -y socialdatax-skills@latest youtube channel-search --keyword "<keyword>" --
 Input variant: `--url`.
 
 ```sh
-npx -y socialdatax-skills@latest youtube transcript --url "<video_url>" --pretty
+npx -y socialdatax-skills@0.2.66 youtube transcript --url "<video_url>" --pretty
 ```
 
 | Flag | Required | Type / accepted values | Default / constraints |
@@ -808,7 +808,7 @@ npx -y socialdatax-skills@latest youtube transcript --url "<video_url>" --pretty
 Input variant: `--video-id`.
 
 ```sh
-npx -y socialdatax-skills@latest youtube transcript --video-id "<video_id>" --pretty
+npx -y socialdatax-skills@0.2.66 youtube transcript --video-id "<video_id>" --pretty
 ```
 
 | Flag | Required | Type / accepted values | Default / constraints |
@@ -818,7 +818,7 @@ npx -y socialdatax-skills@latest youtube transcript --video-id "<video_id>" --pr
 Input variant: `--job-id`.
 
 ```sh
-npx -y socialdatax-skills@latest youtube transcript --job-id "<job_id>" --pretty
+npx -y socialdatax-skills@0.2.66 youtube transcript --job-id "<job_id>" --pretty
 ```
 
 | Flag | Required | Type / accepted values | Default / constraints |
@@ -830,7 +830,7 @@ npx -y socialdatax-skills@latest youtube transcript --job-id "<job_id>" --pretty
 #### `wechat user-search`
 
 ```sh
-npx -y socialdatax-skills@latest wechat user-search --keyword "<keyword>" --pretty
+npx -y socialdatax-skills@0.2.66 wechat user-search --keyword "<keyword>" --pretty
 ```
 
 | Flag | Required | Type / accepted values | Default / constraints |
@@ -841,7 +841,7 @@ npx -y socialdatax-skills@latest wechat user-search --keyword "<keyword>" --pret
 #### `wechat article-search`
 
 ```sh
-npx -y socialdatax-skills@latest wechat article-search --keyword "<keyword>" --pretty
+npx -y socialdatax-skills@0.2.66 wechat article-search --keyword "<keyword>" --pretty
 ```
 
 | Flag | Required | Type / accepted values | Default / constraints |
@@ -854,7 +854,7 @@ npx -y socialdatax-skills@latest wechat article-search --keyword "<keyword>" --p
 #### `wechat mp-account-info`
 
 ```sh
-npx -y socialdatax-skills@latest wechat mp-account-info --account-id "<account_id>" --pretty
+npx -y socialdatax-skills@0.2.66 wechat mp-account-info --account-id "<account_id>" --pretty
 ```
 
 | Flag | Required | Type / accepted values | Default / constraints |
@@ -864,7 +864,7 @@ npx -y socialdatax-skills@latest wechat mp-account-info --account-id "<account_i
 #### `wechat mp-account-articles`
 
 ```sh
-npx -y socialdatax-skills@latest wechat mp-account-articles --account-id "<account_id>" --pretty
+npx -y socialdatax-skills@0.2.66 wechat mp-account-articles --account-id "<account_id>" --pretty
 ```
 
 | Flag | Required | Type / accepted values | Default / constraints |
@@ -875,7 +875,7 @@ npx -y socialdatax-skills@latest wechat mp-account-articles --account-id "<accou
 #### `wechat article-comments`
 
 ```sh
-npx -y socialdatax-skills@latest wechat article-comments --url "<url>" --pretty
+npx -y socialdatax-skills@0.2.66 wechat article-comments --url "<url>" --pretty
 ```
 
 | Flag | Required | Type / accepted values | Default / constraints |
@@ -886,7 +886,7 @@ npx -y socialdatax-skills@latest wechat article-comments --url "<url>" --pretty
 #### `wechat article-replies`
 
 ```sh
-npx -y socialdatax-skills@latest wechat article-replies --url "<url>" --pretty
+npx -y socialdatax-skills@0.2.66 wechat article-replies --url "<url>" --pretty
 ```
 
 | Flag | Required | Type / accepted values | Default / constraints |
@@ -898,7 +898,7 @@ npx -y socialdatax-skills@latest wechat article-replies --url "<url>" --pretty
 #### `wechat share-link`
 
 ```sh
-npx -y socialdatax-skills@latest wechat share-link --object-id "<object_id>" --pretty
+npx -y socialdatax-skills@0.2.66 wechat share-link --object-id "<object_id>" --pretty
 ```
 
 | Flag | Required | Type / accepted values | Default / constraints |
@@ -910,7 +910,7 @@ npx -y socialdatax-skills@latest wechat share-link --object-id "<object_id>" --p
 #### `tieba forum-posts`
 
 ```sh
-npx -y socialdatax-skills@latest tieba forum-posts --forum-name "<forum_name>" --pretty
+npx -y socialdatax-skills@0.2.66 tieba forum-posts --forum-name "<forum_name>" --pretty
 ```
 
 | Flag | Required | Type / accepted values | Default / constraints |
@@ -923,7 +923,7 @@ npx -y socialdatax-skills@latest tieba forum-posts --forum-name "<forum_name>" -
 #### `tieba forum-detail`
 
 ```sh
-npx -y socialdatax-skills@latest tieba forum-detail --forum-name "<forum_name>" --pretty
+npx -y socialdatax-skills@0.2.66 tieba forum-detail --forum-name "<forum_name>" --pretty
 ```
 
 | Flag | Required | Type / accepted values | Default / constraints |
@@ -933,7 +933,7 @@ npx -y socialdatax-skills@latest tieba forum-detail --forum-name "<forum_name>" 
 #### `tieba search-suggestions`
 
 ```sh
-npx -y socialdatax-skills@latest tieba search-suggestions --keyword "<keyword>" --pretty
+npx -y socialdatax-skills@0.2.66 tieba search-suggestions --keyword "<keyword>" --pretty
 ```
 
 | Flag | Required | Type / accepted values | Default / constraints |
@@ -943,7 +943,7 @@ npx -y socialdatax-skills@latest tieba search-suggestions --keyword "<keyword>" 
 #### `tieba user-search`
 
 ```sh
-npx -y socialdatax-skills@latest tieba user-search --keyword "<keyword>" --pretty
+npx -y socialdatax-skills@0.2.66 tieba user-search --keyword "<keyword>" --pretty
 ```
 
 | Flag | Required | Type / accepted values | Default / constraints |
@@ -953,7 +953,7 @@ npx -y socialdatax-skills@latest tieba user-search --keyword "<keyword>" --prett
 #### `tieba search-general`
 
 ```sh
-npx -y socialdatax-skills@latest tieba search-general --keyword "<keyword>" --pretty
+npx -y socialdatax-skills@0.2.66 tieba search-general --keyword "<keyword>" --pretty
 ```
 
 | Flag | Required | Type / accepted values | Default / constraints |
@@ -966,7 +966,7 @@ npx -y socialdatax-skills@latest tieba search-general --keyword "<keyword>" --pr
 Use `--pages <n>` for bounded pagination; `--all` is not supported.
 
 ```sh
-npx -y socialdatax-skills@latest tieba search --keyword "<keyword>" --pretty
+npx -y socialdatax-skills@0.2.66 tieba search --keyword "<keyword>" --pretty
 ```
 
 | Flag | Required | Type / accepted values | Default / constraints |
@@ -978,7 +978,7 @@ npx -y socialdatax-skills@latest tieba search --keyword "<keyword>" --pretty
 #### `tieba forum-search`
 
 ```sh
-npx -y socialdatax-skills@latest tieba forum-search --forum-name "<forum_name>" --keyword "<keyword>" --pretty
+npx -y socialdatax-skills@0.2.66 tieba forum-search --forum-name "<forum_name>" --keyword "<keyword>" --pretty
 ```
 
 | Flag | Required | Type / accepted values | Default / constraints |
@@ -991,7 +991,7 @@ npx -y socialdatax-skills@latest tieba forum-search --forum-name "<forum_name>" 
 #### `tieba replies`
 
 ```sh
-npx -y socialdatax-skills@latest tieba replies --thread-id "<thread_id>" --comment-id "<comment_id>" --pretty
+npx -y socialdatax-skills@0.2.66 tieba replies --thread-id "<thread_id>" --comment-id "<comment_id>" --pretty
 ```
 
 | Flag | Required | Type / accepted values | Default / constraints |
@@ -1005,7 +1005,7 @@ npx -y socialdatax-skills@latest tieba replies --thread-id "<thread_id>" --comme
 Input variant: `--thread-id`.
 
 ```sh
-npx -y socialdatax-skills@latest tieba detail --thread-id "<thread_id>" --pretty
+npx -y socialdatax-skills@0.2.66 tieba detail --thread-id "<thread_id>" --pretty
 ```
 
 | Flag | Required | Type / accepted values | Default / constraints |
@@ -1015,7 +1015,7 @@ npx -y socialdatax-skills@latest tieba detail --thread-id "<thread_id>" --pretty
 Input variant: `--url`.
 
 ```sh
-npx -y socialdatax-skills@latest tieba detail --url "<url>" --pretty
+npx -y socialdatax-skills@0.2.66 tieba detail --url "<url>" --pretty
 ```
 
 | Flag | Required | Type / accepted values | Default / constraints |
@@ -1027,7 +1027,7 @@ npx -y socialdatax-skills@latest tieba detail --url "<url>" --pretty
 Input variant: `--thread-id`.
 
 ```sh
-npx -y socialdatax-skills@latest tieba comments --thread-id "<thread_id>" --pretty
+npx -y socialdatax-skills@0.2.66 tieba comments --thread-id "<thread_id>" --pretty
 ```
 
 | Flag | Required | Type / accepted values | Default / constraints |
@@ -1039,7 +1039,7 @@ npx -y socialdatax-skills@latest tieba comments --thread-id "<thread_id>" --pret
 Input variant: `--url`.
 
 ```sh
-npx -y socialdatax-skills@latest tieba comments --url "<url>" --pretty
+npx -y socialdatax-skills@0.2.66 tieba comments --url "<url>" --pretty
 ```
 
 | Flag | Required | Type / accepted values | Default / constraints |
@@ -1053,7 +1053,7 @@ npx -y socialdatax-skills@latest tieba comments --url "<url>" --pretty
 Input variant: `--user-id`.
 
 ```sh
-npx -y socialdatax-skills@latest tieba user-info --user-id "<user_id>" --pretty
+npx -y socialdatax-skills@0.2.66 tieba user-info --user-id "<user_id>" --pretty
 ```
 
 | Flag | Required | Type / accepted values | Default / constraints |
@@ -1063,7 +1063,7 @@ npx -y socialdatax-skills@latest tieba user-info --user-id "<user_id>" --pretty
 Input variant: `--profile-url`.
 
 ```sh
-npx -y socialdatax-skills@latest tieba user-info --profile-url "<profile_url>" --pretty
+npx -y socialdatax-skills@0.2.66 tieba user-info --profile-url "<profile_url>" --pretty
 ```
 
 | Flag | Required | Type / accepted values | Default / constraints |
@@ -1075,7 +1075,7 @@ npx -y socialdatax-skills@latest tieba user-info --profile-url "<profile_url>" -
 Input variant: `--user-id`.
 
 ```sh
-npx -y socialdatax-skills@latest tieba user-posts --user-id "<user_id>" --pretty
+npx -y socialdatax-skills@0.2.66 tieba user-posts --user-id "<user_id>" --pretty
 ```
 
 | Flag | Required | Type / accepted values | Default / constraints |
@@ -1086,7 +1086,7 @@ npx -y socialdatax-skills@latest tieba user-posts --user-id "<user_id>" --pretty
 Input variant: `--profile-url`.
 
 ```sh
-npx -y socialdatax-skills@latest tieba user-posts --profile-url "<profile_url>" --pretty
+npx -y socialdatax-skills@0.2.66 tieba user-posts --profile-url "<profile_url>" --pretty
 ```
 
 | Flag | Required | Type / accepted values | Default / constraints |
@@ -1099,7 +1099,7 @@ npx -y socialdatax-skills@latest tieba user-posts --profile-url "<profile_url>" 
 Input variant: `--user-id`.
 
 ```sh
-npx -y socialdatax-skills@latest tieba user-forums --user-id "<user_id>" --pretty
+npx -y socialdatax-skills@0.2.66 tieba user-forums --user-id "<user_id>" --pretty
 ```
 
 | Flag | Required | Type / accepted values | Default / constraints |
@@ -1110,7 +1110,7 @@ npx -y socialdatax-skills@latest tieba user-forums --user-id "<user_id>" --prett
 Input variant: `--profile-url`.
 
 ```sh
-npx -y socialdatax-skills@latest tieba user-forums --profile-url "<profile_url>" --pretty
+npx -y socialdatax-skills@0.2.66 tieba user-forums --profile-url "<profile_url>" --pretty
 ```
 
 | Flag | Required | Type / accepted values | Default / constraints |
@@ -1139,15 +1139,15 @@ Video inputs accept exactly one of `--video-id` (digits) or `--url` (video page 
 `comments` returns top-level comments; attached replies are previews. To page through replies, use `replies` with the positive numeric `comment_id` returned by `comments`. `--include-replies` is not supported. Keep page tokens unchanged and use them only with the same command and input; an empty page can still carry a continuation token. `user-info --profile-url` maps to the MCP tool's `url` argument.
 
 ```bash
-npx -y socialdatax-skills@latest haokan search --keyword "露营" --pages 2 --pretty
-npx -y socialdatax-skills@latest haokan user-search --keyword "摄影" --pretty
-npx -y socialdatax-skills@latest haokan search-suggestions --keyword "旅行" --pretty
-npx -y socialdatax-skills@latest haokan hot-search --pretty
-npx -y socialdatax-skills@latest haokan detail --url "<video_url>" --pretty
-npx -y socialdatax-skills@latest haokan comments --video-id "<video_id>" --pages 2 --pretty
-npx -y socialdatax-skills@latest haokan replies --video-id "<video_id>" --comment-id "<comment_id>" --all --pretty
-npx -y socialdatax-skills@latest haokan user-info --profile-url "<profile_url>" --pretty
-npx -y socialdatax-skills@latest haokan user-posts --user-id "<user_id>" --page-token "<next_page_token>" --pretty
+npx -y socialdatax-skills@0.2.66 haokan search --keyword "露营" --pages 2 --pretty
+npx -y socialdatax-skills@0.2.66 haokan user-search --keyword "摄影" --pretty
+npx -y socialdatax-skills@0.2.66 haokan search-suggestions --keyword "旅行" --pretty
+npx -y socialdatax-skills@0.2.66 haokan hot-search --pretty
+npx -y socialdatax-skills@0.2.66 haokan detail --url "<video_url>" --pretty
+npx -y socialdatax-skills@0.2.66 haokan comments --video-id "<video_id>" --pages 2 --pretty
+npx -y socialdatax-skills@0.2.66 haokan replies --video-id "<video_id>" --comment-id "<comment_id>" --all --pretty
+npx -y socialdatax-skills@0.2.66 haokan user-info --profile-url "<profile_url>" --pretty
+npx -y socialdatax-skills@0.2.66 haokan user-posts --user-id "<user_id>" --page-token "<next_page_token>" --pretty
 ```
 
 ### SocialDataX Account (account)
@@ -1155,7 +1155,7 @@ npx -y socialdatax-skills@latest haokan user-posts --user-id "<user_id>" --page-
 #### `account balance`
 
 ```sh
-npx -y socialdatax-skills@latest account balance --pretty
+npx -y socialdatax-skills@0.2.66 account balance --pretty
 ```
 
 No command-specific parameters.
@@ -1165,7 +1165,7 @@ No command-specific parameters.
 #### `docs search`
 
 ```sh
-npx -y socialdatax-skills@latest docs search --query "<query>" --pretty
+npx -y socialdatax-skills@0.2.66 docs search --query "<query>" --pretty
 ```
 
 | Flag | Required | Type / accepted values | Default / constraints |
@@ -1179,7 +1179,7 @@ npx -y socialdatax-skills@latest docs search --query "<query>" --pretty
 #### `docs operation`
 
 ```sh
-npx -y socialdatax-skills@latest docs operation --operation-id "<operation_id>" --pretty
+npx -y socialdatax-skills@0.2.66 docs operation --operation-id "<operation_id>" --pretty
 ```
 
 | Flag | Required | Type / accepted values | Default / constraints |
@@ -1189,7 +1189,7 @@ npx -y socialdatax-skills@latest docs operation --operation-id "<operation_id>" 
 #### `docs openapi`
 
 ```sh
-npx -y socialdatax-skills@latest docs openapi --pretty
+npx -y socialdatax-skills@0.2.66 docs openapi --pretty
 ```
 
 No command-specific parameters.
