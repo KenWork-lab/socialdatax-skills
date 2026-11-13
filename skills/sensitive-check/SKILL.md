@@ -62,6 +62,7 @@ Optional arguments:
 适用于敏感词检测、违禁词检查、文案发布前检查、content safety review、文案合规审核、能不能发判断和 safer rewrite suggestions for draft text.
 The command prints JSON with `platform`, `tool`, and `data`; it does not echo the original text back in CLI arguments. The service returns `violation`, `risk_level`, `types`, `highlights`, `summary`, `platform`, and `suggestions` when available.
 Service note: SocialDataX service records the submitted text and structured detection result for history, billing, and troubleshooting; the local CLI does not write API keys to local files or write local text copies.
+Privacy requirement: before sending any user-provided draft to the hosted service, clearly disclose that the full submitted text and structured result are recorded by SocialDataX, and obtain the user's explicit consent for that specific submission. If consent is not given, do not call the hosted tool; offer an offline review instead. Do not treat a general request for copywriting help as consent to transmit the draft.
 This v1 skill checks text only. Image sensitive detection is intentionally out of scope until a separate image tool is published.
 
 ## Safety Boundary
