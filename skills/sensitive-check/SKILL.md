@@ -44,7 +44,7 @@ Use `SOCIALDATAX_API_KEY` for SocialDataX requests. The only official website fo
 Prefer the direct CLI when the agent can run shell commands. It does not require MCP server configuration:
 
 ```bash
-npx -y socialdatax-skills@latest sensitive-check text \
+npx -y socialdatax-skills@0.2.66 sensitive-check text \
   --text "<content>" --platform xhs --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill sensitive-check
 ```
