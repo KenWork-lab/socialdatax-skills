@@ -15,7 +15,8 @@
     "LICENSE",
     "lib/**",
     "skills/**",
-    "assets/logo.png"
+    "assets/logo.png",
+    "test/**"
   ],
   "scripts": {
     "start": "node ./cli.mjs",
