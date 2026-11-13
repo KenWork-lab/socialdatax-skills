@@ -57,208 +57,208 @@ Use `SOCIALDATAX_API_KEY` for SocialDataX requests. The only official website fo
 Prefer the direct CLI when the agent can run shell commands. It does not require MCP server configuration:
 
 ```bash
-npx -y socialdatax-skills@latest xhs search \
+npx -y socialdatax-skills@0.2.66 xhs search \
   --keyword "<keyword>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-search
 
-npx -y socialdatax-skills@latest xhs search \
+npx -y socialdatax-skills@0.2.66 xhs search \
   --keyword "<keyword>" --pages 3 --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-search
 
-npx -y socialdatax-skills@latest douyin search \
+npx -y socialdatax-skills@0.2.66 douyin search \
   --keyword "<keyword>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-search
 
-npx -y socialdatax-skills@latest douyin search \
+npx -y socialdatax-skills@0.2.66 douyin search \
   --keyword "<keyword>" --pages 3 --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-search
 
-npx -y socialdatax-skills@latest kuaishou search \
+npx -y socialdatax-skills@0.2.66 kuaishou search \
   --keyword "<keyword>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-search
 
-npx -y socialdatax-skills@latest kuaishou search \
+npx -y socialdatax-skills@0.2.66 kuaishou search \
   --keyword "<keyword>" --pages 3 --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-search
 
-npx -y socialdatax-skills@latest bilibili search-videos \
+npx -y socialdatax-skills@0.2.66 bilibili search-videos \
   --keyword "<keyword>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-search
 
-npx -y socialdatax-skills@latest bilibili search-articles \
+npx -y socialdatax-skills@0.2.66 bilibili search-articles \
   --keyword "<keyword>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-search
 
-npx -y socialdatax-skills@latest zhihu search \
+npx -y socialdatax-skills@0.2.66 zhihu search \
   --keyword "<keyword>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-search
 
-npx -y socialdatax-skills@latest zhihu search \
+npx -y socialdatax-skills@0.2.66 zhihu search \
   --keyword "<keyword>" --pages 3 --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-search
 
-npx -y socialdatax-skills@latest instagram search \
+npx -y socialdatax-skills@0.2.66 instagram search \
   --keyword "<keyword>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-search
 
-npx -y socialdatax-skills@latest instagram search \
+npx -y socialdatax-skills@0.2.66 instagram search \
   --keyword "<keyword>" --pages 3 --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-search
 
-npx -y socialdatax-skills@latest x search \
+npx -y socialdatax-skills@0.2.66 x search \
   --keyword "<keyword>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-search
 
-npx -y socialdatax-skills@latest x search \
+npx -y socialdatax-skills@0.2.66 x search \
   --keyword "<keyword>" --pages 3 --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-search
 
-npx -y socialdatax-skills@latest youtube search \
+npx -y socialdatax-skills@0.2.66 youtube search \
   --keyword "<keyword>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-search
 
-npx -y socialdatax-skills@latest youtube search \
+npx -y socialdatax-skills@0.2.66 youtube search \
   --keyword "<keyword>" --pages 3 --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-search
 
-npx -y socialdatax-skills@latest tiktok search \
+npx -y socialdatax-skills@0.2.66 tiktok search \
   --keyword "<keyword>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-search
 
-npx -y socialdatax-skills@latest tiktok search \
+npx -y socialdatax-skills@0.2.66 tiktok search \
   --keyword "<keyword>" --pages 3 --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-search
 
-npx -y socialdatax-skills@latest weibo search \
+npx -y socialdatax-skills@0.2.66 weibo search \
   --keyword "<keyword>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-search
 
-npx -y socialdatax-skills@latest weibo search \
+npx -y socialdatax-skills@0.2.66 weibo search \
   --keyword "<keyword>" --pages 3 --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-search
 
-npx -y socialdatax-skills@latest toutiao search \
+npx -y socialdatax-skills@0.2.66 toutiao search \
   --keyword "<keyword>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-search
 
-npx -y socialdatax-skills@latest toutiao search \
+npx -y socialdatax-skills@0.2.66 toutiao search \
   --keyword "<keyword>" --pages 3 --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-search
 
-npx -y socialdatax-skills@latest wechat search \
+npx -y socialdatax-skills@0.2.66 wechat search \
   --keyword "<keyword>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-search
 
-npx -y socialdatax-skills@latest wechat search \
+npx -y socialdatax-skills@0.2.66 wechat search \
   --keyword "<keyword>" --pages 3 --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-search
 
-npx -y socialdatax-skills@latest xhs search-suggestions \
+npx -y socialdatax-skills@0.2.66 xhs search-suggestions \
   --keyword "<keyword>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-search
 
-npx -y socialdatax-skills@latest douyin search-suggestions \
+npx -y socialdatax-skills@0.2.66 douyin search-suggestions \
   --keyword "<keyword>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-search
 
-npx -y socialdatax-skills@latest tiktok search-suggestions \
+npx -y socialdatax-skills@0.2.66 tiktok search-suggestions \
   --keyword "<keyword>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-search
 
-npx -y socialdatax-skills@latest weibo search-suggestions \
+npx -y socialdatax-skills@0.2.66 weibo search-suggestions \
   --keyword "<keyword>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-search
 
-npx -y socialdatax-skills@latest zhihu search-suggestions \
+npx -y socialdatax-skills@0.2.66 zhihu search-suggestions \
   --keyword "<keyword>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-search
 
-npx -y socialdatax-skills@latest x search-suggestions \
+npx -y socialdatax-skills@0.2.66 x search-suggestions \
   --keyword "<keyword>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-search
 
-npx -y socialdatax-skills@latest bilibili search-suggestions \
+npx -y socialdatax-skills@0.2.66 bilibili search-suggestions \
   --keyword "<keyword>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-search
 
-npx -y socialdatax-skills@latest kuaishou search-suggestions \
+npx -y socialdatax-skills@0.2.66 kuaishou search-suggestions \
   --keyword "<keyword>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-search
 
-npx -y socialdatax-skills@latest youtube search-suggestions \
+npx -y socialdatax-skills@0.2.66 youtube search-suggestions \
   --keyword "<keyword>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-search
 
-npx -y socialdatax-skills@latest toutiao search-suggestions \
+npx -y socialdatax-skills@0.2.66 toutiao search-suggestions \
   --keyword "<keyword>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-search
 
-npx -y socialdatax-skills@latest instagram tag-search \
+npx -y socialdatax-skills@0.2.66 instagram tag-search \
   --keyword "<keyword>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-search
 
-npx -y socialdatax-skills@latest xhs search-images \
+npx -y socialdatax-skills@0.2.66 xhs search-images \
   --keyword "<keyword>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-search
 
-npx -y socialdatax-skills@latest xhs product-search \
+npx -y socialdatax-skills@0.2.66 xhs product-search \
   --keyword "<keyword>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-search
 
-npx -y socialdatax-skills@latest douyin product-search \
+npx -y socialdatax-skills@0.2.66 douyin product-search \
   --keyword "<keyword>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-search
 
-npx -y socialdatax-skills@latest xhs topic-notes \
+npx -y socialdatax-skills@0.2.66 xhs topic-notes \
   --page-id "<page_id>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-search
 
-npx -y socialdatax-skills@latest xhs topic-notes \
+npx -y socialdatax-skills@0.2.66 xhs topic-notes \
   --url "<topic_url>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-search
 
-npx -y socialdatax-skills@latest wechat article-search \
+npx -y socialdatax-skills@0.2.66 wechat article-search \
   --keyword "<keyword>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-search
 
-npx -y socialdatax-skills@latest tieba forum-posts \
+npx -y socialdatax-skills@0.2.66 tieba forum-posts \
   --forum-name "<forum_name>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-search
 
-npx -y socialdatax-skills@latest tieba search-suggestions \
+npx -y socialdatax-skills@0.2.66 tieba search-suggestions \
   --keyword "<keyword>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-search
 
-npx -y socialdatax-skills@latest tieba search-general \
+npx -y socialdatax-skills@0.2.66 tieba search-general \
   --keyword "<keyword>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-search
 
-npx -y socialdatax-skills@latest tieba search \
+npx -y socialdatax-skills@0.2.66 tieba search \
   --keyword "<keyword>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-search
 
-npx -y socialdatax-skills@latest tieba forum-search \
+npx -y socialdatax-skills@0.2.66 tieba forum-search \
   --forum-name "<forum_name>" --keyword "<keyword>" --pretty \
   --source-client socialdatax-skills --source-platform github \
   --source-skill media-search
 
-npx -y socialdatax-skills@latest youtube channel-search \
+npx -y socialdatax-skills@0.2.66 youtube channel-search \
   --keyword "<keyword>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-search
 
-npx -y socialdatax-skills@latest haokan search \
+npx -y socialdatax-skills@0.2.66 haokan search \
   --keyword "<keyword>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-search
 
-npx -y socialdatax-skills@latest haokan user-search \
+npx -y socialdatax-skills@0.2.66 haokan user-search \
   --keyword "<keyword>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-search
 
-npx -y socialdatax-skills@latest haokan search-suggestions \
+npx -y socialdatax-skills@0.2.66 haokan search-suggestions \
   --keyword "<keyword>" --pretty --source-client socialdatax-skills \
   --source-platform github --source-skill media-search
 
-npx -y socialdatax-skills@latest haokan hot-search \
+npx -y socialdatax-skills@0.2.66 haokan hot-search \
   --pretty --source-client socialdatax-skills --source-platform github \
   --source-skill media-search
 ```
@@ -396,7 +396,7 @@ WeChat Channels / 视频号 duration filter values:
 Weibo, Toutiao, and WeChat Channels search pagination:
 - Continue only when `next_page_token` is not empty.
 - Pass the complete returned `next_page_token` back unchanged as `page_token` for the same search pagination chain. Do not modify, truncate, redact, mask, omit, normalize, rebuild, generate, or replace the middle with ellipses.
-Use `npx -y socialdatax-skills@latest <platform> <action> --help` for exact flags and values. Paginated commands require the complete returned `next_page_token`. Do not modify, truncate, redact, mask, omit, normalize, rebuild, generate, or replace the middle with ellipses. Commands without `--page-token`, including suggestions and first-page-only searches, do not support pagination.
+Use `npx -y socialdatax-skills@0.2.66 <platform> <action> --help` for exact flags and values. Paginated commands require the complete returned `next_page_token`. Do not modify, truncate, redact, mask, omit, normalize, rebuild, generate, or replace the middle with ellipses. Commands without `--page-token`, including suggestions and first-page-only searches, do not support pagination.
 Haokan / 好看视频: use `search` for videos, `user-search` for accounts, `search-suggestions` for query suggestions, and `hot-search` for search terms rather than a video ranking. Only the two search commands accept page tokens; video search uses bounded `--pages`, not `--all`. No `--since-days` filter is available.
 
 ## Safety Boundary
@@ -483,7 +483,7 @@ For Kuaishou search results, include `photo_id`, `share_url`, author facts, and 
 For Bilibili search results, include content IDs, URLs, titles or descriptions, creator facts, and visible interaction counts when the user needs traceability.
 For Zhihu search results, include content URLs, titles or summaries, creator facts, and visible interaction counts when the user needs traceability.
 For Instagram, X / Twitter, YouTube, and TikTok search results, include returned post or video URLs, public IDs, author facts, and visible interaction counts when the user needs traceability.
-For X / Twitter search results, preserve returned `media_items[].cover_image_url` and `media_items[].video_url` values when present. When the user wants to save X media, pass one returned media URL at a time to `npx -y socialdatax-skills@latest x download-media --url "<media_url>" --output-dir <directory> --pretty`; this local save command does not require `SOCIALDATAX_API_KEY`. If the CLI process does not inherit the user's local proxy, add `--proxy "http://127.0.0.1:7890"` or set `HTTP_PROXY` / `HTTPS_PROXY` / `ALL_PROXY`. If search media fields are absent, use X detail as the fallback before downloading.
+For X / Twitter search results, preserve returned `media_items[].cover_image_url` and `media_items[].video_url` values when present. When the user wants to save X media, pass one returned media URL at a time to `npx -y socialdatax-skills@0.2.66 x download-media --url "<media_url>" --output-dir <directory> --pretty`; this local save command does not require `SOCIALDATAX_API_KEY`. If the CLI process does not inherit the user's local proxy, add `--proxy "http://127.0.0.1:7890"` or set `HTTP_PROXY` / `HTTPS_PROXY` / `ALL_PROXY`. If search media fields are absent, use X detail as the fallback before downloading.
 For Weibo search results, include `post_id`, `post_url`, author facts, interaction counts, and publish time when the user needs traceability.
 For WeChat Channels / 视频号 search results, include `encrypted_object_id`, author facts, interaction counts, publish time, and duration when the user needs traceability.
 
