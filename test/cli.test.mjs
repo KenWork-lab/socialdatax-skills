@@ -3224,7 +3224,9 @@ test("bilibili download derives output file from output-dir and removes tracks b
       })(),
     };
   };
-  const spawnProcess = (_command, args) => {
+  const spawnProcess = (_command, args, spawnOptions) => {
+    assert.equal(spawnOptions.shell, false);
+    assert.equal(Object.keys(spawnOptions.env).some(name => name.toUpperCase() === "FFREPORT"), false);
     ffmpegCalls.push(args);
     const child = new EventEmitter();
     child.stderr = new EventEmitter();
@@ -3250,6 +3252,7 @@ test("bilibili download derives output file from output-dir and removes tracks b
     assert.equal(readFileSync(result.output_path, "utf8"), "merged-output");
     assert.deepEqual(ffmpegCalls[0], ["-version"]);
     assert.deepEqual(ffmpegCalls[1], [
+      "-nostdin",
       "-y",
       "-i",
       result.tracks[0].path,
