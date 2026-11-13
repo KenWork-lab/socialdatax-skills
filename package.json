@@ -16,7 +16,8 @@
     "lib/**",
     "skills/**",
     "assets/logo.png",
-    "test/**"
+    "test/run-tests.mjs",
+    "test/public-package.test.mjs"
   ],
   "scripts": {
     "start": "node ./cli.mjs",
