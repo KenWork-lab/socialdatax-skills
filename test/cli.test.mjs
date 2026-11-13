@@ -31,6 +31,7 @@ import {
 } from "../cli.mjs";
 import { downloadBilibiliVideoFromManifest } from "../lib/media/bilibili-download.mjs";
 import { downloadPlatformMediaFromUrl } from "../lib/media/platform-download.mjs";
+import { createRestrictedMediaProcessEnvironment } from "../lib/media/common.mjs";
 import { withoutCredentialProbe } from "./credential-copy-fixture.mjs";
 
 const packageDir = dirname(dirname(fileURLToPath(import.meta.url)));
@@ -39,6 +40,19 @@ const packageMetadata = JSON.parse(
   readFileSync(join(packageDir, "package.json"), "utf8")
 );
 const removedDouyinApiKeyEnv = ["DOUYIN", "MCP", "API", "KEY"].join("_");
+
+test("media subprocess environment excludes application secrets and runtime injection", () => {
+  const environment = createRestrictedMediaProcessEnvironment({
+    PATH: "/usr/bin",
+    HOME: "/home/test",
+    SOCIALDATAX_API_KEY: "must-not-leak",
+    AWS_SECRET_ACCESS_KEY: "must-not-leak",
+    NODE_OPTIONS: "--require attacker.js",
+    LD_PRELOAD: "/tmp/attacker.so",
+    FFREPORT: "file=report.log",
+  });
+  assert.deepEqual(environment, { PATH: "/usr/bin", HOME: "/home/test" });
+});
 
 async function listenHttpServer(server) {
   await new Promise((resolve, reject) => {
