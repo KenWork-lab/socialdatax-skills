@@ -4,6 +4,7 @@ import { existsSync, realpathSync } from "node:fs";
 import {
   cp,
   mkdir,
+  lstat,
   readFile,
   rm,
   stat,
@@ -2978,17 +2979,25 @@ async function installOneSkill({
 }
 
 async function ensureSafeToReplaceSkill(destination, skillName) {
-  const destinationStats = await stat(destination);
-  if (!destinationStats.isDirectory()) {
+  const destinationStats = await lstat(destination);
+  if (destinationStats.isSymbolicLink() || !destinationStats.isDirectory()) {
     throw new Error(
-      `Refusing to replace ${destination}: existing path is not a skill directory. Remove it manually or choose a different --path.`
+      `Refusing to replace ${destination}: existing path must be a real directory, not a symbolic link or another file type. Remove it manually or choose a different --path.`
     );
   }
 
   const skillFile = join(destination, "SKILL.md");
-  if (!existsSync(skillFile)) {
+  let skillFileStats;
+  try {
+    skillFileStats = await lstat(skillFile);
+  } catch (error) {
+    if (error?.code !== "ENOENT") {
+      throw error;
+    }
+  }
+  if (!skillFileStats || skillFileStats.isSymbolicLink() || !skillFileStats.isFile()) {
     throw new Error(
-      `Refusing to replace ${destination}: existing directory does not contain SKILL.md. Remove it manually or choose a different --path.`
+      `Refusing to replace ${destination}: SKILL.md must be a regular file, not a symbolic link or another file type. Remove it manually or choose a different --path.`
     );
   }
 
