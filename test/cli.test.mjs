@@ -31,7 +31,7 @@ import {
 } from "../cli.mjs";
 import { downloadBilibiliVideoFromManifest } from "../lib/media/bilibili-download.mjs";
 import { downloadPlatformMediaFromUrl } from "../lib/media/platform-download.mjs";
-import { createRestrictedMediaProcessEnvironment } from "../lib/media/common.mjs";
+import { createRestrictedMediaProcessEnvironment, writeResponseBodyToFile } from "../lib/media/common.mjs";
 import { withoutCredentialProbe } from "./credential-copy-fixture.mjs";
 
 const packageDir = dirname(dirname(fileURLToPath(import.meta.url)));
@@ -52,6 +52,30 @@ test("media subprocess environment excludes application secrets and runtime inje
     FFREPORT: "file=report.log",
   });
   assert.deepEqual(environment, { PATH: "/usr/bin", HOME: "/home/test" });
+});
+
+test("media temporary writer refuses existing files and symlinks", async () => {
+  const directory = mkdtempSync(join(tmpdir(), "sdx-media-temp-"));
+  const existing = join(directory, "existing.part");
+  const target = join(directory, "target.txt");
+  const linked = join(directory, "linked.part");
+  writeFileSync(existing, "preserve-existing");
+  writeFileSync(target, "preserve-target");
+  symlinkSync(target, linked);
+  try {
+    await assert.rejects(
+      writeResponseBodyToFile(new Response("overwrite"), existing),
+      { code: "EEXIST" }
+    );
+    await assert.rejects(
+      writeResponseBodyToFile(new Response("overwrite"), linked),
+      { code: "EEXIST" }
+    );
+    assert.equal(readFileSync(existing, "utf8"), "preserve-existing");
+    assert.equal(readFileSync(target, "utf8"), "preserve-target");
+  } finally {
+    rmSync(directory, { recursive: true, force: true });
+  }
 });
 
 async function listenHttpServer(server) {
